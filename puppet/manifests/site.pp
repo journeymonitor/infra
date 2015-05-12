@@ -3,3 +3,7 @@ class {"python-selenium":}
 class {"nodejs":}
 class {"phantomjs":}
 class {"php5":}
+class {"user-selenior":}
+class {"cronjobs":}
+class {"postfix":}
+class {"nginx":}

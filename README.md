@@ -9,7 +9,8 @@ This service is responsible for providing VMs that can be used to run the Seleni
 
 The following applies to a vanilla Ubuntu 14.04 64bit system.
 
-    sudo apt-get install puppet
+    sudo su -
+    apt-get install puppet
     mkdir -p /opt/selenior
     cd /opt/selenior
     git clone git@bitbucket.org:selenior/infra-maschine-provisionor.git

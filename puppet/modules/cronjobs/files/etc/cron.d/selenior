@@ -1,0 +1,1 @@
+* * * * * root sleep 30 && rm /etc/cron.d/selenior-run-* && sudo -u selenior php /opt/selenior/monitor-testcase-importor/bin/import.php http://localhost:5999/api/control/testcases && sudo -u selenior php /opt/selenior/monitor-job-creator/bin/create.php && chown root:root /etc/cron.d/selenior-run-* && chmod 0644 /etc/cron.d/selenior-run-*

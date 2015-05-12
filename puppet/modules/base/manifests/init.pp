@@ -1,6 +1,6 @@
 class base {
 
-  package { ["make", "g++"]:
+  package { ["make", "g++", "sqlite"]:
     ensure => "installed",
   }
 
