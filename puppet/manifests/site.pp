@@ -1,7 +1,5 @@
 class {"base":}
-class {"python-selenium":}
-class {"nodejs":}
-class {"phantomjs":}
+class {"selenium":}
 class {"php5":}
 class {"user-selenior":}
 class {"cronjobs":}
