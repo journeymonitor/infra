@@ -1,7 +1,7 @@
 class user-selenior {
 
   user { "selenior":
-    comment    => "Selenior user",
+    comment    => "JourneyMonitor",
     home       => "/home/selenior",
     shell      => "/bin/bash",
     uid        => 5999,
