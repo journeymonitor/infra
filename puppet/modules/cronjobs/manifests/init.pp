@@ -12,6 +12,7 @@ class cronjobs {
     group   => "root",
     mode    => 0644,
     source  => "puppet:///modules/cronjobs/etc/cron.d/selenior",
+    require => [ File["/etc/cron.d"], File["/opt/simplecd/simplecd.sh"], Exec["composer global install"] ]
   }
 
 }

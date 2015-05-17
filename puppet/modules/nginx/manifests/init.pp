@@ -9,14 +9,14 @@ class nginx {
     group   => "root",
     mode    => 0644,
     source  => "puppet:///modules/nginx/etc/nginx/sites-available/journeymonitor.com",
-    require => Package["nginx"],
+    require => [ Package["nginx"], Package["php5-fpm"] ],
     notify  => Service["nginx"],
   }
 
   file { "/etc/nginx/sites-enabled/journeymonitor.com":
     ensure  => "link",
     target  => "/etc/nginx/sites-available/journeymonitor.com",
-    require => Package["nginx"],
+    require => [ Package["nginx"], Package["php5-fpm"] ],
     notify  => Service["nginx"],
   }
 
@@ -26,7 +26,7 @@ class nginx {
     hasrestart => true,
     restart    => "/etc/init.d/nginx configtest && /etc/init.d/nginx reload", # Wir starten nur neu, wenn es keine Konfigurationsfehler gibt
     enable     => true,
-    require    => Package["nginx"],
+    require    => [ Package["nginx"], Package["php5-fpm"] ],
   }
 
 }
