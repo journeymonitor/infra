@@ -1,5 +1,7 @@
 MAILTO=""
 
+* * * * * root /opt/simplecd/simplecd.sh branch master https://JourneyMonitorDeployer:Uhnd736gvfs5198G@bitbucket.org/selenior/infra-maschine-provisionor.git
+
 * * * * * root /opt/simplecd/simplecd.sh branch master https://JourneyMonitorDeployer:Uhnd736gvfs5198G@bitbucket.org/selenior/control-web-frontend.git
 
 * * * * * root /opt/simplecd/simplecd.sh branch master https://JourneyMonitorDeployer:Uhnd736gvfs5198G@bitbucket.org/selenior/monitor.git

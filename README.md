@@ -16,3 +16,6 @@ The following applies to a vanilla Ubuntu 14.04 64bit system.
     git clone git@bitbucket.org:selenior/infra-maschine-provisionor.git
     cd infra-maschine-provisionor/puppet
     puppet apply --verbose --modulepath=./modules manifests/site.pp
+
+From this point on, the repo will deploy itself to the system (see build/10-deploy-production and
+puppet/modules/cronjobs/files/etc/cron.d/selenior).
