@@ -32,3 +32,31 @@ server {
 	}
 
 }
+
+server {
+
+	server_name monitor-api;
+	listen 127.0.0.1:8081;
+	access_log /var/log/nginx/journeymonitor-monitor-api.access.log;
+	error_log /var/log/nginx/journeymonitor-monitor-api.error.log;
+	charset utf-8;
+
+	root /opt/selenior/monitor/web;
+	index index.php;
+
+	location ~ \.php$ {
+		fastcgi_pass unix:/var/run/php5-fpm.sock;
+		fastcgi_index index.php;
+		include fastcgi_params;
+		fastcgi_param PHP_ENV prod;
+	}
+
+	location / {
+		if (-f $request_filename) {
+			expires max;
+			break;
+		}
+		rewrite ^(.*) /app.php last;
+	}
+
+}
