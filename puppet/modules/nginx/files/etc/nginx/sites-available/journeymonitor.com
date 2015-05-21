@@ -56,7 +56,7 @@ server {
 			expires max;
 			break;
 		}
-		rewrite ^(.*) /app.php last;
+		rewrite ^(.*) /index.php last;
 	}
 
 }
