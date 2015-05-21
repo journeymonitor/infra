@@ -1,6 +1,6 @@
 class postfix {
 
-  package {["postfix"]:
+  package {["postfix", "mailutils"]:
     ensure => "installed",
   }
 
