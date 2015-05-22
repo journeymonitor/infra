@@ -11,4 +11,11 @@ class base {
     mode   => 0755,
   }
 
+  file { ["/var/tmp/selenior-screenshots"]:
+    ensure => "directory",
+    owner  => "selenior",
+    group  => "selenior",
+    mode   => 0755,
+  }
+
 }

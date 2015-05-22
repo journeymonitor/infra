@@ -27,6 +27,37 @@ server {
 		deny all;
 	}
 
+	location /testresult-screenshots {
+		proxy_pass http://127.0.0.1:8083/;
+	}
+
+}
+
+server {
+
+	server_name control-api;
+	listen 127.0.0.1:8082;
+	access_log /var/log/nginx/journeymonitor-control-api.access.log;
+	error_log /var/log/nginx/journeymonitor-control-api.error.log;
+	charset utf-8;
+
+	root /opt/selenior/control-web-frontend/web;
+	index index.php;
+
+	location ~ \.php$ {
+		fastcgi_pass unix:/var/run/php5-fpm.sock;
+		fastcgi_index app.php;
+		include fastcgi_params;
+	}
+
+	location / {
+		if (-f $request_filename) {
+			expires max;
+			break;
+		}
+		rewrite ^(.*) /app.php last;
+	}
+
 }
 
 server {
@@ -59,27 +90,20 @@ server {
 
 server {
 
-	server_name control-api;
-	listen 127.0.0.1:8082;
-	access_log /var/log/nginx/journeymonitor-control-api.access.log;
-	error_log /var/log/nginx/journeymonitor-control-api.error.log;
+	server_name monitor-media;
+	listen 127.0.0.1:8083;
+	access_log /var/log/nginx/journeymonitor-monitor-media.access.log;
+	error_log /var/log/nginx/journeymonitor-monitor-media.error.log;
 	charset utf-8;
 
-	root /opt/selenior/control-web-frontend/web;
-	index index.php;
-
-	location ~ \.php$ {
-		fastcgi_pass unix:/var/run/php5-fpm.sock;
-		fastcgi_index app.php;
-		include fastcgi_params;
-	}
+	root /var/tmp/selenior-screenshots;
+	index index.html;
 
 	location / {
 		if (-f $request_filename) {
 			expires max;
 			break;
 		}
-		rewrite ^(.*) /app.php last;
 	}
 
 }
