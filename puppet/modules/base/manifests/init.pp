@@ -1,6 +1,6 @@
 class base {
 
-  package { ["make", "g++", "sqlite", "htop"]:
+  package { ["make", "g++", "sqlite", "htop", "imagemagick"]:
     ensure => "installed",
   }
 
