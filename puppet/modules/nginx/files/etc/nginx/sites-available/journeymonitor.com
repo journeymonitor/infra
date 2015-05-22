@@ -23,12 +23,8 @@ server {
 		rewrite ^(.*) /app.php last;
 	}
 
-	# This still allows access from anywhere and I don't know why
 	location /api {
-		allow 127.0.0.1;
-		allow 5.45.99.8;
 		deny all;
-		rewrite ^(.*) /app.php last;
 	}
 
 }
@@ -57,6 +53,33 @@ server {
 			break;
 		}
 		rewrite ^(.*) /index.php last;
+	}
+
+}
+
+server {
+
+	server_name control-api;
+	listen 127.0.0.1:8082;
+	access_log /var/log/nginx/journeymonitor-control-api.access.log;
+	error_log /var/log/nginx/journeymonitor-control-api.error.log;
+	charset utf-8;
+
+	root /opt/selenior/control-web-frontend/web;
+	index index.php;
+
+	location ~ \.php$ {
+		fastcgi_pass unix:/var/run/php5-fpm.sock;
+		fastcgi_index app.php;
+		include fastcgi_params;
+	}
+
+	location / {
+		if (-f $request_filename) {
+			expires max;
+			break;
+		}
+		rewrite ^(.*) /app.php last;
 	}
 
 }

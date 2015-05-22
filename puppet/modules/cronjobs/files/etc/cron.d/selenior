@@ -8,4 +8,4 @@ MAILTO=""
 
 * * * * * root sudo -u www-data /usr/bin/php /opt/selenior/control-web-frontend/app/console selenior:control:import:testresults http://127.0.0.1:8081/ --env=prod >> /var/tmp/selenior-control-import-testresults.log 2>&1
 
-* * * * * root sleep 30 && sudo -u selenior PHP_ENV=prod /usr/bin/php /opt/selenior/monitor/bin/import.php http://journeymonitor.com/api/control/testcases >> /var/tmp/selenior-importor.log 2>&1 && rm -f /etc/cron.d/selenior-run-* && sudo -u selenior PHP_ENV=prod /usr/bin/php /opt/selenior/monitor/bin/create.php >> /var/tmp/selenior-creator.log 2>&1 && chown root:root /etc/cron.d/selenior-run-* && chmod 0644 /etc/cron.d/selenior-run-*
+* * * * * root sleep 30 && sudo -u selenior PHP_ENV=prod /usr/bin/php /opt/selenior/monitor/bin/import.php http://127.0.0.1:8082/api/control/testcases >> /var/tmp/selenior-importor.log 2>&1 && rm -f /etc/cron.d/selenior-run-* && sudo -u selenior PHP_ENV=prod /usr/bin/php /opt/selenior/monitor/bin/create.php >> /var/tmp/selenior-creator.log 2>&1 && chown root:root /etc/cron.d/selenior-run-* && chmod 0644 /etc/cron.d/selenior-run-*
