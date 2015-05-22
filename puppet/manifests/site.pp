@@ -1,9 +1,10 @@
 class {"base":}
 class {"selenium":}
 class {"php5":}
+class {"composer":}
 class {"user-selenior":}
 class {"nodejs":}
-class {"composer":}
+class {"phantomjs":}
 class {"bower":}
 class {"simplecd":}
 class {"cronjobs":}
