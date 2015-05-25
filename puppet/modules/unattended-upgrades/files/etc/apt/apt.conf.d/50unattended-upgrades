@@ -1,0 +1,4 @@
+// managed by puppet
+Unattended-Upgrade::Allowed-Origins {
+  "${distro_id} ${distro_codename}-security";
+};

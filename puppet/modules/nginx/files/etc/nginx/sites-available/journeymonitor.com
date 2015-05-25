@@ -1,3 +1,5 @@
+# managed by puppet
+
 server {
 
 	server_name journeymonitor.com www.journeymonitor.com;

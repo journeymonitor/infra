@@ -1,7 +1,24 @@
 class base {
 
-  package { ["make", "g++", "sqlite", "htop", "imagemagick"]:
-    ensure => "installed",
+  package {
+    [ "openssh-server",
+      "ethtool",
+      "tcpdump",
+      "vim",
+      "htop",
+      "iotop",
+      "sysstat",
+      "acpid",
+      "unattended-upgrades",
+      "unzip",
+      "bwm-ng",
+      "make",
+      "g++",
+      "curl",
+      "sqlite",
+      "imagemagick"
+    ]:
+      ensure => present,
   }
 
   file { ["/opt/puppet", "/opt/puppet/install"]:

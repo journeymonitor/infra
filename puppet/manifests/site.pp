@@ -1,4 +1,5 @@
 class {"base":}
+class {"unattended-upgrades":}
 class {"selenium":}
 class {"php5":}
 class {"composer":}

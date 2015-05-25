@@ -1,3 +1,4 @@
+# managed by puppet
 MAILTO=""
 
 * * * * * root /opt/simplecd/simplecd.sh branch master https://JourneyMonitorDeployer:Uhnd736gvfs5198G@bitbucket.org/selenior/infra-maschine-provisionor.git
