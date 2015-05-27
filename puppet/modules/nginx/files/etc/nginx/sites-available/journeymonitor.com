@@ -25,7 +25,7 @@ server {
 		rewrite ^(.*) /app.php last;
 	}
 
-	location /api {
+	location /api/control {
 		deny all;
 	}
 
