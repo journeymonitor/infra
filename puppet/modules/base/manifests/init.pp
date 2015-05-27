@@ -9,7 +9,6 @@ class base {
       "iotop",
       "sysstat",
       "acpid",
-      "unattended-upgrades",
       "unzip",
       "bwm-ng",
       "make",
