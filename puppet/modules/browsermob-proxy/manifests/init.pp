@@ -4,7 +4,7 @@ class browsermob-proxy {
     owner   => "root",
     group   => "root",
     mode    => 0755,
-    source  => "puppet:///modules/nodejs/opt/puppet/install/browsermob-proxy-2.0.0-bin.zip",
+    source  => "puppet:///modules/browsermob-proxy/opt/puppet/install/browsermob-proxy-2.0.0-bin.zip",
     require => File["/opt/puppet/install"],
   }
 
