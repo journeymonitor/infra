@@ -1,7 +1,7 @@
 class {"base":}
 class {"unattended-upgrades":}
 class {"selenium":}
-class {"browsermob-proxy"}
+class {"browsermob-proxy":}
 class {"php5":}
 class {"composer":}
 class {"user-selenior":}
