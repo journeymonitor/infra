@@ -16,7 +16,6 @@ class base {
       "curl",
       "sqlite",
       "imagemagick",
-      "unzip"
     ]:
       ensure => present,
   }
