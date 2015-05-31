@@ -15,7 +15,8 @@ class base {
       "g++",
       "curl",
       "sqlite",
-      "imagemagick"
+      "imagemagick",
+      "unzip"
     ]:
       ensure => present,
   }
