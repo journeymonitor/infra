@@ -9,7 +9,7 @@ class unattended-upgrades {
     owner   => "root",
     group   => "root",
     mode    => 0644,
-    source  => "puppet:///modules/unattended-updates/etc/apt/apt.conf.d/50unattended-upgrades",
+    source  => "puppet:///modules/unattended-upgrades/etc/apt/apt.conf.d/50unattended-upgrades",
   }
 
   file { "/etc/apt/apt.conf.d/10periodic":
