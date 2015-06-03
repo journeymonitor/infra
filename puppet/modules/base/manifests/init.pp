@@ -16,6 +16,7 @@ class base {
       "curl",
       "sqlite",
       "imagemagick",
+      "git"
     ]:
       ensure => present,
   }

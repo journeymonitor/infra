@@ -1,7 +1,8 @@
 class simplecd {
 
   file { "/opt/simplecd":
-    ensure => "directory",
+    ensure  => "directory",
+    require => Package["git"],
   }
 
   exec { "install simplecd":
