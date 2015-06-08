@@ -1,0 +1,10 @@
+---
+:backends:
+  - yaml
+:yaml:
+  :datadir: "%{::puppet_root}/hieradata"
+:hierarchy:
+  - "host/%{fqdn}"
+  - "role/%{hiera('role')}"
+  - "env/%{hiera('env')}"
+  - common

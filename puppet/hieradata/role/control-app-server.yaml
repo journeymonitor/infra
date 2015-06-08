@@ -1,0 +1,13 @@
+---
+classes:
+  - php5
+  - composer
+  - user-selenior
+  - nodejs
+  - bower
+  - cronjobs
+  - postfix
+  - nginx
+
+applications:
+  - control

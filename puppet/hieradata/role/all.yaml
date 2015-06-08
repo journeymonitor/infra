@@ -1,0 +1,18 @@
+---
+classes:
+  - selenium
+  - browsermob-proxy
+  - php5
+  - composer
+  - user-selenior
+  - nodejs
+  - phantomjs
+  - bower
+  - simplecd
+  - cronjobs
+  - postfix
+  - nginx
+
+applications:
+  - monitor
+  - control

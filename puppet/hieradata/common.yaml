@@ -1,0 +1,12 @@
+---
+classes:
+  - base
+  - unattended-upgrades
+  - simplecd
+  - cronjobs
+
+env: dev
+role: all
+
+nginx::app_env: "%{hiera('env')}"
+cronjobs::env: "%{hiera('env')}"

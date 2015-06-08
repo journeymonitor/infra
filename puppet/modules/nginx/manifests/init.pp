@@ -1,4 +1,4 @@
-class nginx {
+class nginx ($app_env = "prod") {
 
   package { ["nginx"]:
     ensure => "installed"
@@ -8,7 +8,7 @@ class nginx {
     owner   => "root",
     group   => "root",
     mode    => 0644,
-    source  => "puppet:///modules/nginx/etc/nginx/sites-available/journeymonitor.com",
+    content => template("nginx/etc/nginx/sites-available/journeymonitor.com.erb"),
     require => [ Package["nginx"], Package["php5-fpm"] ],
     notify  => Service["nginx"],
   }
@@ -24,7 +24,7 @@ class nginx {
     ensure     => running,
     hasstatus  => true,
     hasrestart => true,
-    restart    => "/etc/init.d/nginx configtest && /etc/init.d/nginx reload", # Wir starten nur neu, wenn es keine Konfigurationsfehler gibt
+    restart    => "/etc/init.d/nginx configtest && /etc/init.d/nginx reload", # Only restart if configuration is okay
     enable     => true,
     require    => [ Package["nginx"], Package["php5-fpm"] ],
   }

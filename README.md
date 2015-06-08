@@ -1,21 +1,27 @@
-# Selenior - INFRA - maschine-provisionor
+# JourneyMonitor - INFRA
 
 ## About
 
-This service is responsible for providing VMs that can be used to run the Selenior applications.
+This repository is responsible for providing setups where JourneyMonitor applications can be run.
 
 
 ## Setup instructions
 
-The following applies to a vanilla Ubuntu 14.04 64bit system.
+### Setting up a development environment
 
-    sudo su -
-    apt-get install git puppet
-    mkdir -p /opt/selenior
-    cd /opt/selenior
-    git clone git@bitbucket.org:selenior/infra-maschine-provisionor.git
-    cd infra-maschine-provisionor/puppet
-    puppet apply --verbose --modulepath=./modules manifests/site.pp
+- Install VirtualBox
+- Install Vagrant
+- Install Git
 
-From this point on, the repo will deploy itself to the system (see build/10-deploy-production and
-puppet/modules/cronjobs/files/etc/cron.d/selenior).
+    git clone git@bitbucket.org:selenior/infra.git
+    cd infra
+    vagrant up
+    
+This gives you a virtual machine at IP 192.168.99.99.
+
+The following applies to this machine:
+
+- If there is a change to the master branch of this repository, the changes are applied
+  to the machine via puppet - that is, the VM automatically stays up to date. Within the
+  VM, the file `/etc/cron.d/selenior-infra is responsible for this.
+

@@ -1,7 +1,0 @@
-#!/bin/bash
-
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH
-
-cd $2/puppet
-
-/usr/bin/puppet apply --verbose --modulepath=./modules manifests/site.pp || exit 1
