@@ -2,6 +2,7 @@ class selenium {
 
   package { ["default-jre-headless", "xvfb", "firefox"]:
     ensure => "installed",
+    require => Exec["apt-get update"],
   }
 
   file { "/opt/selenese-runner-java":

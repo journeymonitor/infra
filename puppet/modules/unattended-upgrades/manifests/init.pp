@@ -2,6 +2,7 @@ class unattended-upgrades {
 
   package { [ "unattended-upgrades" ]:
     ensure => present,
+    require => Exec["apt-get update"],
   }
 
   file { "/etc/apt/apt.conf.d/50unattended-upgrades":

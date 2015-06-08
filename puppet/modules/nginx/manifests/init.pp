@@ -1,7 +1,8 @@
 class nginx ($app_env = "prod") {
 
   package { ["nginx"]:
-    ensure => "installed"
+    ensure => "installed",
+    require => Exec["apt-get update"],
   }
 
   file { "/etc/nginx/sites-available/journeymonitor.com":

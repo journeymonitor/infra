@@ -2,7 +2,7 @@
 
 server {
 
-	server_name journeymonitor.com www.journeymonitor.com;
+	server_name journeymonitor.com www.journeymonitor.com <% if @app_env == "dev" %>192.168.99.99<% end %>;
 	listen 0.0.0.0:80;
 	access_log /var/log/nginx/journeymonitor.com.access.log;
 	error_log /var/log/nginx/journeymonitor.com.error.log;

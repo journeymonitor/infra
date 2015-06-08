@@ -7,7 +7,7 @@ class user-selenior {
     uid        => 5999,
     gid        => 5999,
     managehome => "true",
-    password   => '$6$IiUfnru9$XMshH4Vv4ykttB0T5EgNVP2jOQ8AbWy4W8OmOWhItogwn6uQo1N0ZNc3EH7tfEaex7Ep.MySlgL0s.Wj4OPk9/', # H6ten39iurnbc6tF
+    password   => '$6$IiUfnru9$XMshH4Vv4ykttB0T5EgNVP2jOQ8AbWy4W8OmOWhItogwn6uQo1N0ZNc3EH7tfEaex7Ep.MySlgL0s.Wj4OPk9/',
     groups     => ["selenior"],
   }
 

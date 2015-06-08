@@ -19,6 +19,7 @@ class base {
       "git"
     ]:
       ensure => present,
+      require => Exec["apt-get update"],
   }
 
   file { ["/opt/puppet", "/opt/puppet/install"]:
@@ -33,6 +34,10 @@ class base {
     owner  => "selenior",
     group  => "selenior",
     mode   => 0755,
+  }
+
+  exec { "apt-get update":
+    command => "/usr/bin/apt-get update",
   }
 
 }

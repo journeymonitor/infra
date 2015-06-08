@@ -2,6 +2,7 @@ class phantomjs {
 
   package { ["libfontconfig1"]:
     ensure => "installed",
+    require => Exec["apt-get update"],
   }
 
   exec { "phantomjs global install":
