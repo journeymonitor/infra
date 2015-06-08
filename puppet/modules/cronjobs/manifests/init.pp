@@ -21,7 +21,7 @@ class cronjobs ($applications = hiera_array("applications"), $env) {
     owner   => "root",
     group   => "root",
     mode    => 0644,
-    content => "cronjobs/etc/cron.d/selenior-infra.erb",
+    content => template("cronjobs/etc/cron.d/selenior-infra.erb"),
     require => [ File["/etc/cron.d"], File["/opt/simplecd/simplecd.sh"], Exec["composer global install"] ]
   }
 
