@@ -13,7 +13,7 @@ server {
 
 	location ~ \.php$ {
 		fastcgi_pass unix:/var/run/php5-fpm.sock;
-		fastcgi_index <% if @app_env == "dev" %>app_dev.php<% else %>app.php<% end %>;
+		fastcgi_index app<% if @app_env == "dev" %>_dev<% end %>.php;
 		include fastcgi_params;
 	}
 
@@ -22,7 +22,7 @@ server {
 			expires max;
 			break;
 		}
-		rewrite ^(.*) /app.php last;
+		rewrite ^(.*) /app<% if @app_env == "dev" %>_dev<% end %>.php last;
 	}
 
 	location /api/internal {
@@ -48,7 +48,7 @@ server {
 
 	location ~ \.php$ {
 		fastcgi_pass unix:/var/run/php5-fpm.sock;
-		fastcgi_index <% if @app_env == "dev" %>app_dev.php<% else %>app.php<% end %>;
+		fastcgi_index app<% if @app_env == "dev" %>_dev<% end %>.dev;
 		include fastcgi_params;
 	}
 
@@ -57,7 +57,7 @@ server {
 			expires max;
 			break;
 		}
-		rewrite ^(.*) /app.php last;
+		rewrite ^(.*) /app<% if @app_env == "dev" %>_dev<% end %>.php last;
 	}
 
 }

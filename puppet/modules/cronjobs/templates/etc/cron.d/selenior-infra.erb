@@ -1,4 +1,6 @@
 # managed by puppet
 MAILTO=""
 
+<% if @env == "prod" %>
 * * * * * root /opt/simplecd/simplecd.sh branch master https://JourneyMonitorDeployer:Uhnd736gvfs5198G@bitbucket.org/selenior/infra.git
+<% end %>

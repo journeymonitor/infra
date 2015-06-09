@@ -9,4 +9,7 @@ env: dev
 role: all
 
 nginx::app_env: "%{hiera('env')}"
+nginx::user: www-data
+php5::fpm_user: "%{hiera('nginx::user')}"
+
 cronjobs::env: "%{hiera('env')}"

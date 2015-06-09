@@ -1,8 +1,17 @@
-class nginx ($app_env = "prod") {
+class nginx ($app_env = "prod", $user = "www-data") {
 
   package { ["nginx"]:
     ensure => "installed",
     require => Exec["apt-get update"],
+  }
+
+  file { "/etc/nginx/nginx.conf":
+    owner   => "root",
+    group   => "root",
+    mode    => 0644,
+    content => template("nginx/etc/nginx/nginx.conf.erb"),
+    require => [ Package["nginx"] ],
+    notify  => Service["nginx"],
   }
 
   file { "/etc/nginx/sites-available/journeymonitor.com":
