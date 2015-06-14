@@ -16,7 +16,7 @@ class browsermob-proxy {
 
   exec { "run browsermob-proxy":
     command => "/usr/bin/nohup /bin/bash /opt/browsermob-proxy-2.0.0/bin/browsermob-proxy --address 127.0.0.1 --port 9090 --ttl 3600 >> /var/log/browsermob-proxy.log 2>&1 &",
-    unless => ''/bin/ps axu | /bin/grep "java -classpath :/opt/browsermob-proxy-2.0.0" | /bin/grep -v "grep"',
+    unless  => '/bin/ps axu | /bin/grep "java -classpath :/opt/browsermob-proxy-2.0.0" | /bin/grep -v "grep"',
     require => [ Package[ ["unzip", "default-jre-headless"] ], File[ ["/opt/puppet/install/browsermob-proxy-2.0.0-bin.zip"] ] ],
   }
 
