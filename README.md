@@ -1,8 +1,15 @@
-# JourneyMonitor - INFRA
+# JourneyMonitor
 
-## About
+## About this repository
 
 This repository is responsible for managing setups where JourneyMonitor applications can be run.
+
+[![Build Status](https://travis-ci.org/journeymonitor/infra.png?branch=master)](https://travis-ci.org/journeymonitor/infra)
+
+
+## About the JourneyMonitor project
+
+Please see [ABOUT.md](ABOUT.md) for more information.
 
 
 ## Setup instructions
@@ -63,9 +70,11 @@ systems at http://journeymonitor.com.
   `travis encrypt GITHUB_TOKEN=<token-from-clipboard>`
 - Add the resulting *secure* line to the `.travis.yml` file of the according repository, like so:
 
-    env:
-      global:
-      - secure: "i/g95ZV29lj...M4ZocNL+yo="
+```yaml
+env:
+  global:
+  - secure: "i/g95ZV29lj...M4ZocNL+yo="
+```
 
 - For each repository, set up a `.travis.yml` file that builds and tests the application for this repository
 - As the `after_success` step, define `- make travisci-after-success`
