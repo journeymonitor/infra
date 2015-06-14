@@ -1,16 +1,13 @@
 class php5 ($fpm_user = "www-data") {
 
   package { ["php5-cli", "php5-sqlite", "php5-curl", "php5-fpm"]:
-    ensure => present,
+    ensure  => present,
     require => Exec["apt-get update"],
   }
 
   service { "php5-fpm":
-    ensure     => running,
-    hasstatus  => true,
-    hasrestart => true,
-    enable     => true,
-    require    => [ Package["php5-fpm"] ],
+    ensure  => running,
+    require => [ Package["php5-fpm"] ],
   }
 
   file { "/etc/php5/fpm/pool.d/www.conf":
