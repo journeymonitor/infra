@@ -35,15 +35,16 @@ The following applies to this machine:
 
 This has been tested to work on an Ubuntu 14.04 64bit system.
 
-- In `puppet/hieradata/host`, add a file name `<fqdn of your host>.yaml`.
+- In `puppet/hieradata/host`, add a file named `<fqdn of your host>.yaml`.
 - In this file, declare `env: prod` and `role: all`.
 - Commit and push.
-- On the target system, clone this repository.
-- `sudo apt-get update && sudo apt-get install puppet`
-- cd `infra/puppet`
-- `sudo FACTER_puppet_root=./ puppet apply --verbose --modulepath=./modules --hiera_config=./hiera.yaml manifests/site.pp`
+- On the target system, run `sudo apt-get update && sudo apt-get install puppet`.
+- Then, clone this repository: `git clone git@github.com:journeymonitor/infra.git`.
+- `cd infra/puppet`
+- Run `sudo FACTER_puppet_root=./ puppet apply --verbose --modulepath=./modules --hiera_config=./hiera.yaml manifests/site.pp`.
 
-This will result in the `control` and `monitor` applications being installed and set up after some minutes, will set up continuous delivery for these apps, and will serve the JourneyMonitor platform on port 80.
+This will result in the `control` and `monitor` applications being installed and set up after some minutes, will set up
+continuous delivery for these apps, and will serve the JourneyMonitor platform on port 80.
 
 
 ### Setting up Continuous Delivery with TravisCI and SimpleCD
