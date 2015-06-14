@@ -1,8 +1,0 @@
-# managed by puppet
-MAILTO=""
-
-<% if @env == "prod" %>
-* * * * * root /opt/simplecd/simplecd.sh branch master https://JourneyMonitorDeployer:Uhnd736gvfs5198G@bitbucket.org/selenior/control.git
-<% end %>
-
-* * * * * root sudo -u www-data /usr/bin/php /opt/selenior/control/app/console selenior:control:import:testresults http://127.0.0.1:8081/ --env=<%= @env %> >> /var/tmp/selenior-control-import-testresults.log 2>&1

@@ -1,0 +1,9 @@
+# managed by puppet
+MAILTO=""
+
+<% if @env == "prod" %>
+* * * * * root /opt/simplecd/simplecd.sh tag travisci-build-master-* https://github.com/journeymonitor/control.git https://github.com/journeymonitor/control/commit/
+
+<% end %>
+
+* * * * * root sudo -u www-data /usr/bin/php /opt/journeymonitor/control/app/console journeymonitor:control:import:testresults http://127.0.0.1:8081/ --env=<%= @env %> >> /var/tmp/journeymonitor-control-import-testresults.log 2>&1

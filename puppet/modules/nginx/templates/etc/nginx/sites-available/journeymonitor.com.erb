@@ -8,7 +8,7 @@ server {
 	error_log /var/log/nginx/journeymonitor.com.error.log;
 	charset utf-8;
 
-	root /opt/selenior/control/web;
+	root /opt/journeymonitor/control/web;
 	index index.php;
 
 	location ~ \.php$ {
@@ -43,7 +43,7 @@ server {
 	error_log /var/log/nginx/journeymonitor-control-api.error.log;
 	charset utf-8;
 
-	root /opt/selenior/control/web;
+	root /opt/journeymonitor/control/web;
 	index index.php;
 
 	location ~ \.php$ {
@@ -70,7 +70,7 @@ server {
 	error_log /var/log/nginx/journeymonitor-monitor-api.error.log;
 	charset utf-8;
 
-	root /opt/selenior/monitor/web;
+	root /opt/journeymonitor/monitor/web;
 	index index.php;
 
 	location ~ \.php$ {
@@ -98,7 +98,7 @@ server {
 	error_log /var/log/nginx/journeymonitor-monitor-media.error.log;
 	charset utf-8;
 
-	root /var/tmp/selenior-screenshots;
+	root /var/tmp/journeymonitor-screenshots;
 	index index.html;
 
 	location / {

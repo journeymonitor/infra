@@ -2,7 +2,7 @@
 classes:
   - php5
   - composer
-  - user-selenior
+  - user-journeymonitor
   - nodejs
   - bower
   - cronjobs

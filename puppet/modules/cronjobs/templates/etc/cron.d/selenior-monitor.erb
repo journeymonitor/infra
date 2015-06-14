@@ -1,8 +1,0 @@
-# managed by puppet
-MAILTO=""
-
-<% if @env == "prod" %>
-* * * * * root /opt/simplecd/simplecd.sh branch master https://JourneyMonitorDeployer:Uhnd736gvfs5198G@bitbucket.org/selenior/monitor.git
-<% end %>
-
-* * * * * root sleep 30 && sudo -u selenior PHP_ENV=<%= @env %> /usr/bin/php /opt/selenior/monitor/bin/import.php http://127.0.0.1:8082/api/internal/testcases.json >> /var/tmp/selenior-monitor-import.log 2>&1 && rm -f /etc/cron.d/selenior-run-* && sudo -u selenior PHP_ENV=<%= @env %> /usr/bin/php /opt/selenior/monitor/bin/create.php >> /var/tmp/selenior-monitor-create.log 2>&1 && chown root:root /etc/cron.d/selenior-run-* && chmod 0644 /etc/cron.d/selenior-run-*

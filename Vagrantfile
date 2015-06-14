@@ -6,8 +6,8 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.network "private_network", ip: "192.168.99.99"
 
-  config.vm.synced_folder "../control/", "/opt/selenior/control", nfs: true
-  config.vm.synced_folder "../monitor/", "/opt/selenior/monitor", nfs: true
+  config.vm.synced_folder "../control/", "/opt/journeymonitor/control", nfs: true
+  config.vm.synced_folder "../monitor/", "/opt/journeymonitor/monitor", nfs: true
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = 2048

@@ -29,10 +29,10 @@ class base {
     mode   => 0755,
   }
 
-  file { ["/var/tmp/selenior-screenshots"]:
+  file { ["/var/tmp/journeymonitor-screenshots"]:
     ensure => "directory",
-    owner  => "selenior",
-    group  => "selenior",
+    owner  => "journeymonitor",
+    group  => "journeymonitor",
     mode   => 0755,
   }
 
