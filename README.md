@@ -25,7 +25,7 @@ Please see [ABOUT.md](ABOUT.md) for more information.
 - `cd infra`
 - `vagrant up`
 
-This gives you a virtual machine at IP `192.168.99.99`. Right now, the inital setup takes
+This gives you a virtual machine at IP `192.168.59.99`. Right now, the inital setup takes
 quite some time because Node.js is compiled from sources.
 
 The following applies to this machine:
