@@ -2,5 +2,5 @@
 MAILTO=""
 
 <% if @env == "prod" %>
-* * * * * root /opt/simplecd/simplecd.sh tag travisci-build-master-* https://github.com/journeymonitor/infra.git https://github.com/journeymonitor/infra/commit/ | while IFS= read -r line;do echo "$(date) $line";done >> /var/tmp/simplecd/journeymonitor-infra.log 2>>&1
+* * * * * root /opt/simplecd/simplecd.sh tag travisci-build-master-* https://github.com/journeymonitor/infra.git https://github.com/journeymonitor/infra/commit/ | while IFS= read -r line;do echo "$(date) $line";done >> /var/tmp/simplecd/journeymonitor-infra.log 2>&1
 <% end %>
