@@ -9,7 +9,7 @@ class kafka {
   }
 
   exec { "install kafka":
-    command => "/usr/bin/tar xvfz /opt/puppet/install/kafka_2.11-0.8.2.2.tgz -C /opt > /opt/puppet/install/install-kafka.log 2>&1",
+    command => "/bin/tar xvfz /opt/puppet/install/kafka_2.11-0.8.2.2.tgz -C /opt > /opt/puppet/install/install-kafka.log 2>&1",
     creates => "/opt/kafka_2.11-0.8.2.2/",
     require => File["/opt/puppet/install/kafka_2.11-0.8.2.2.tgz"],
   }

@@ -7,7 +7,7 @@ class spark {
   }
 
   exec { "install spark":
-    command => "/usr/bin/tar xvfz /opt/puppet/install/spark-1.5.1-bin-hadoop-2.6_scala-2.11.tgz -C /opt > /opt/puppet/install/install-spark.log 2>&1",
+    command => "/bin/tar xvfz /opt/puppet/install/spark-1.5.1-bin-hadoop-2.6_scala-2.11.tgz -C /opt > /opt/puppet/install/install-spark.log 2>&1",
     creates => "/opt/spark-1.5.1-bin-hadoop-2.6_scala-2.11/",
     require => Exec["download spark"],
   }
