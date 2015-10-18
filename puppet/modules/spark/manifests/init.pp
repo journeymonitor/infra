@@ -2,6 +2,7 @@ class spark {
 
   exec { "download spark":
     command => '/usr/bin/curl -L "https://dl.bintray.com/journeymonitor/infra-artifacts/spark-1.5.1-bin-hadoop-2.6_scala-2.11.tgz" -o /opt/puppet/install/spark-1.5.1-bin-hadoop-2.6_scala-2.11.tgz > /opt/puppet/install/download-spark.log 2>&1',
+    timeout => 1800,
     creates => "/opt/puppet/install/spark-1.5.1-bin-hadoop-2.6_scala-2.11.tgz",
     require => File["/opt/puppet/install"],
   }
