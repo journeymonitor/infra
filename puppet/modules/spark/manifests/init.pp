@@ -20,7 +20,8 @@ class spark ($worker_webui_startport = 8081) {
   }
 
   exec { "run spark worker":
-    command => "SPARK_WORKER_WEBUI_PORT=${worker_webui_startport} /bin/bash /opt/spark-1.5.1-bin-hadoop-2.6_scala-2.11/sbin/start-slave.sh spark://127.0.0.1:7077 >> /var/log/spark-worker.log 2>&1",
+    environment => ["SPARK_WORKER_WEBUI_PORT=${worker_webui_startport}"],
+    command => "/bin/bash /opt/spark-1.5.1-bin-hadoop-2.6_scala-2.11/sbin/start-slave.sh spark://127.0.0.1:7077 >> /var/log/spark-worker.log 2>&1",
     unless  => '/bin/ps axu | /bin/grep "java" | /bin/grep "org.apache.spark.deploy.worker.Worker" | /bin/grep -v "grep"',
     require => Exec["run spark master"],
   }
