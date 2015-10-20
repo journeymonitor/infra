@@ -13,3 +13,5 @@ nginx::user: www-data
 php5::fpm_user: "%{hiera('nginx::user')}"
 
 cronjobs::env: "%{hiera('env')}"
+
+spark::worker_webui_startport: 8180
