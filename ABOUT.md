@@ -21,5 +21,6 @@ As of now, the service is split into 3 repositories:
 - **[control](https://github.com/journeymonitor/control)** is a Symfony2 application that powers the web frontend at
   http://journeymonitor.com
 - **[monitor](https://github.com/journeymonitor/monitor)** is a plain PHP application with Bash script additions that
-  does the actual heavy-lifting of running the testcases against a Firefox/Selenium setup and collecting the performance
-  metrics
+  does the actual heavy-lifting of running the testcases against a Firefox/Selenium setup and collecting the results
+- **[analyze](https://github.com/journeymonitor/anaylze)** is a Scala/Spark application that extracts interesting
+  metrics from the testcase runs
