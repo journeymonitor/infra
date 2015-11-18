@@ -15,7 +15,7 @@ class base {
       "g++",
       "curl",
       "sqlite",
-      "imagemagick",
+      "imagemagick", # @TODO: This probably belongs into an app-specific module
       "git"
     ]:
       ensure => present,

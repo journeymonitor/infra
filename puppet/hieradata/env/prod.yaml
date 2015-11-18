@@ -1,2 +1,2 @@
 ---
-foo: bar
+spark-slave::master_address: service-misc-experiments-1

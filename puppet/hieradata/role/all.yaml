@@ -12,8 +12,6 @@ classes:
   - cronjobs
   - postfix
   - nginx
-  - kafka
-  - spark
 
 applications:
   - monitor

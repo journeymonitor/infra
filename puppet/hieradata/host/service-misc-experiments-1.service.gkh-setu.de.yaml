@@ -1,0 +1,4 @@
+---
+env: prod
+role: analyze-app-master
+cronjobs::disable_infra_ci: true

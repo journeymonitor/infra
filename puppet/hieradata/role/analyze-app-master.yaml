@@ -1,0 +1,7 @@
+---
+classes:
+  - postfix
+  - spark-master
+
+applications:
+  - analyze

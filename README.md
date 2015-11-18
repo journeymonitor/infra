@@ -48,7 +48,7 @@ This has been tested to work on an Ubuntu 14.04 64bit system.
 - On the target system, run `sudo apt-get update && sudo apt-get install puppet`.
 - Then, clone this repository: `git clone git@github.com:journeymonitor/infra.git`.
 - `cd infra/puppet`
-- Run `sudo FACTER_puppet_root=./ puppet apply --verbose --modulepath=./modules --hiera_config=./hiera.yaml manifests/site.pp`.
+- Run `./apply.sh`.
 
 This will result in the `control` and `monitor` applications being installed and set up after some minutes, will set up
 continuous delivery for these apps, and will serve the JourneyMonitor platform on port 80.

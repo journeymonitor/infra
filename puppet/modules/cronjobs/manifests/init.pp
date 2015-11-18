@@ -8,7 +8,7 @@ define createCronjobFile($application, $env) {
   }
 }
 
-class cronjobs ($applications = hiera_array("applications"), $env) {
+class cronjobs ($applications = hiera_array("applications"), $env, $disable_infra_ci = false) {
 
   file { "/etc/cron.d":
     ensure  => "directory",
@@ -22,7 +22,7 @@ class cronjobs ($applications = hiera_array("applications"), $env) {
     group   => "root",
     mode    => 0644,
     content => template("cronjobs/etc/cron.d/journeymonitor-infra.erb"),
-    require => [ File["/etc/cron.d"], File["/opt/simplecd/simplecd.sh"], Exec["composer global install"] ]
+    require => [ File["/etc/cron.d"], File["/opt/simplecd/simplecd.sh"] ]
   }
 
   createCronjobFile { $applications:

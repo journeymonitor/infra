@@ -1,6 +1,10 @@
 # managed by puppet
 MAILTO=""
 
-<% if @env == "prod" %>
+<% if @disable_infra_ci == true %>
+# INFRA Continuous Delivery disabled
+<% end %>
+
+<% if @env == "prod" && @disable_infra_ci == false %>
 * * * * * root /opt/simplecd/simplecd.sh tag travisci-build-master-* https://github.com/journeymonitor/infra.git https://github.com/journeymonitor/infra/commit/ | while IFS= read -r line;do echo "$(date) $line";done >> /var/tmp/simplecd/journeymonitor-infra.log 2>&1
 <% end %>
