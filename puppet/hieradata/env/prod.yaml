@@ -1,2 +1,4 @@
 ---
 spark-slave::master_address: service-misc-experiments-1
+cassandra::cluster_name: JourneyMonitorProd
+cassandra::seed_nodes: 10.31.32.82,10.31.32.83,10.31.32.84

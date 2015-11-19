@@ -22,7 +22,7 @@ class base {
       require => Exec["apt-get update"],
   }
 
-  file { ["/opt/puppet", "/opt/puppet/install"]:
+  file { ["/opt/puppet", "/opt/puppet/install", "/opt/puppet/flags"]:
     ensure => "directory",
     owner  => "root",
     group  => "root",
