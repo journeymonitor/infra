@@ -1,11 +1,14 @@
 ---
+# The following are used in certain Puppet manifests, but never in app environments
 spark-slave::master_address: service-misc-experiments-1
 cassandra::cluster_name: JourneyMonitorProd
 cassandra::seed_nodes: 10.31.32.82,10.31.32.83,10.31.32.84
-app-analyze::cassandra_address: 10.31.32.82
-
-env::cassandra:uri:analyze_keyspace: cassandra://10.31.32.82:9042/analyze?host=10.31.32.83&host=10.31.32.84
-env::endpoint:monitor_api: http://journeymonitor.com:8081/
-
+app-analyze::cassandra_cqlsh_host: &cassandra_cqlsh_host 10.31.32.82
 app-monitor::api:allowed_ips:
   - 80.69.33.177 # net-lab experiments systems come from this address
+
+# The following are used in app environments (see env-mgmt module), but never in Puppet manifests
+env::cassandra:cqlsh_host: *cassandra_cqlsh_host
+env::cassandra:uri:analyze_keyspace: cassandra://10.31.32.82:9042/analyze?host=10.31.32.83&host=10.31.32.84
+env::cassandra:uri:test_keyspace: cassandra://10.31.32.82:9042/analyze?host=10.31.32.83&host=10.31.32.84
+env::endpoint:monitor_api: http://journeymonitor.com:8081/

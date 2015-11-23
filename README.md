@@ -66,7 +66,7 @@ systems at http://journeymonitor.com.
 - At https://github.com/settings/tokens, generate a new token with *public_repo* and *repo_deployment* rights
 - Copy the newly generated token to the clipboard
 - Install the *travis* gem via `sudo gem install travis`
-- Go to the root folder of each repository clone (*infra*, *control*, and *monitor*), and run
+- Go to the root folder of each repository clone (*infra*, *control*, *monitor*, and *analyze*), and run
   `travis encrypt GITHUB_TOKEN=<token-from-clipboard>`
 - Add the resulting *secure* line to the `.travis.yml` file of the according repository, like so:
 
