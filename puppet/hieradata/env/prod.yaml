@@ -10,5 +10,5 @@ app-monitor::api:allowed_ips:
 # The following are used in app environments (see env-mgmt module), but never in Puppet manifests
 env::cassandra:cqlsh_host: *cassandra_cqlsh_host
 env::cassandra:uri:analyze_keyspace: cassandra://10.31.32.82:9042/analyze?host=10.31.32.83&host=10.31.32.84
-env::cassandra:uri:test_keyspace: cassandra://10.31.32.82:9042/analyze?host=10.31.32.83&host=10.31.32.84
+env::cassandra:uri:test_keyspace: cassandra://10.31.32.82:9042/test?host=10.31.32.83&host=10.31.32.84
 env::endpoint:monitor_api: http://journeymonitor.com:8081/

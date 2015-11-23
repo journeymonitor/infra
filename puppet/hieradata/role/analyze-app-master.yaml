@@ -4,6 +4,7 @@ classes:
   - spark-master
   - app-analyze
   - sbt
+  - jdk
   - jre
 
 applications:
