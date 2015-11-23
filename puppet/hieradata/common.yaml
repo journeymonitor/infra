@@ -6,9 +6,11 @@ classes:
   - user-root
   - user-journeymonitor
   - cronjobs
+  - env-mgmt
 
 env: dev
-role: all
+role: control-and-monitor-app-server
+applications: []
 
 nginx::app_env: "%{hiera('env')}"
 nginx::user: www-data

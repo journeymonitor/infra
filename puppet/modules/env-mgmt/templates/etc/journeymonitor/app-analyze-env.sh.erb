@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# managed by puppet
+
+export JOURNEYMONITOR_ANALYZE_IMPORTER_CASSANDRAURI="<%= scope.function_hiera(['env::cassandra:uri:analyze_keyspace']) %>"
+
+export JOURNEYMONITOR_ANALYZE_SPARK_CASSANDRAURI="<%= scope.function_hiera(['env::cassandra:uri:analyze_keyspace']) %>"

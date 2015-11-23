@@ -1,10 +1,5 @@
 class spark-master ($worker_webui_startport = 8081) {
 
-  package { ["default-jre-headless"]:
-    ensure => "installed",
-    require => Exec["apt-get update"],
-  }
-
   exec { "download spark":
     command => '/usr/bin/curl -L "https://dl.bintray.com/journeymonitor/infra-artifacts/spark-1.5.1-bin-hadoop-2.6_scala-2.11.tgz" -o /opt/puppet/install/spark-1.5.1-bin-hadoop-2.6_scala-2.11.tgz > /opt/puppet/install/download-spark.log 2>&1',
     timeout => 1800,
@@ -21,7 +16,7 @@ class spark-master ($worker_webui_startport = 8081) {
   exec { "run spark master":
     command => "/bin/bash /opt/spark-1.5.1-bin-hadoop-2.6_scala-2.11/sbin/start-master.sh >> /var/log/spark-master.log 2>&1",
     unless  => '/bin/ps axu | /bin/grep "java" | /bin/grep "org.apache.spark.deploy.master.Master" | /bin/grep -v "grep"',
-    require => [ Exec["install spark"], Package["default-jre-headless"] ],
+    require => [ Exec["install spark"], Class["jre"] ],
   }
 
   /*

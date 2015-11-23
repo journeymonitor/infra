@@ -1,3 +1,3 @@
 ---
 env: prod
-role: all
+role: control-and-monitor-app-server

@@ -2,6 +2,11 @@
 classes:
   - postfix
   - spark-master
+  - app-analyze
+  - sbt
+  - jre
 
 applications:
   - analyze
+
+app-analyze::testresults_cache_path: /var/tmp/journeymonitor-testresults.json

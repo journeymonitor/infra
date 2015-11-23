@@ -5,7 +5,7 @@ class kafka {
     group   => "root",
     mode    => 0755,
     source  => "puppet:///modules/kafka/opt/puppet/install/kafka_2.11-0.8.2.2.tgz",
-    require => [ File["/opt/puppet/install"], Package["default-jre-headless"] ]
+    require => [ File["/opt/puppet/install"], Class["jre"] ]
   }
 
   exec { "install kafka":

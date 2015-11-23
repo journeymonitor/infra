@@ -15,7 +15,6 @@ class base {
       "g++",
       "curl",
       "sqlite",
-      "imagemagick", # @TODO: This probably belongs into an app-specific module
       "git"
     ]:
       ensure => present,
@@ -26,13 +25,6 @@ class base {
     ensure => "directory",
     owner  => "root",
     group  => "root",
-    mode   => 0755,
-  }
-
-  file { ["/var/tmp/journeymonitor-screenshots"]:
-    ensure => "directory",
-    owner  => "journeymonitor",
-    group  => "journeymonitor",
     mode   => 0755,
   }
 

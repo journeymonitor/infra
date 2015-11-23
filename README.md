@@ -83,3 +83,12 @@ env:
   repository, a SimpleCD cronjob is defined (see
   https://github.com/journeymonitor/infra/blob/puppet/modules/cronjobs/templates/etc/cron.d/journeymonitor-control.erb
   for an example) that watches these tags and triggers a deployment whenever a new tag appears
+
+
+## Guide to the repository
+
+### Noteworthy Puppet modules
+
+`puppet/modules/env-mgmt` is the place where infrastructure-wide environment variables are managed (which are, e.g., used by the applications).
+
+Modules starting with `app-` provide the system configuration that needs to be in place for the application in question to being able to operate - however, these modules do not install the application itself (this is achieved via the SimpleCD continuous delivery setup).

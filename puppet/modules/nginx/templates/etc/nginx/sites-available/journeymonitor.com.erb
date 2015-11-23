@@ -65,7 +65,7 @@ server {
 server {
 
 	server_name monitor-api;
-	listen 127.0.0.1:8081;
+	listen 0.0.0.0:8081;
 	access_log /var/log/nginx/journeymonitor-monitor-api.access.log;
 	error_log /var/log/nginx/journeymonitor-monitor-api.error.log;
 	charset utf-8;
@@ -86,6 +86,11 @@ server {
 			break;
 		}
 		rewrite ^(.*) /index.php last;
+		allow 127.0.0.1;
+		<% scope.function_hiera(['app-monitor::api:allowed_ips']).each do |address| %>
+  			allow <%= address %>;
+		<% end %>
+		deny all;
 	}
 
 }

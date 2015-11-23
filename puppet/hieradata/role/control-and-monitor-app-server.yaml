@@ -12,6 +12,8 @@ classes:
   - cronjobs
   - postfix
   - nginx
+  - app-monitor
+  - jre
 
 applications:
   - monitor

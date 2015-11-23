@@ -5,4 +5,4 @@ MAILTO=""
 # analyze prod entries
 <% end %>
 
-# analyze entries
+#* * * * * journeymonitor /usr/bin/curl <%= scope.function_hiera(['env::endpoint:monitor_api']) %> -o <%= scope.function_hiera(['app-analyze::testresults_cache_path']) %> && source /etc/journeymonitor/app-analyze-env.sh && /usr/bin/java -jar /opt/journey.. <%= scope.function_hiera(['app-analyze::testresults_cache_path']) %>

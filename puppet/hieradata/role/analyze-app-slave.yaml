@@ -3,6 +3,4 @@ classes:
   - postfix
   - spark-slave
   - cassandra
-
-applications:
-  - analyze
+  - jre
