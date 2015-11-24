@@ -2,7 +2,7 @@
 MAILTO=""
 
 <% if @env == "prod" %>
-#* * * * * root /opt/simplecd/simplecd.sh tag travisci-build-master-* https://github.com/journeymonitor/analyze.git https://github.com/journeymonitor/analyze/commit/ | while IFS= read -r line;do echo "$(date) $line";done >> /var/tmp/simplecd/journeymonitor-analyze.log 2>&1
+* * * * * root /opt/simplecd/simplecd.sh tag travisci-build-master-* https://github.com/journeymonitor/analyze.git https://github.com/journeymonitor/analyze/commit/ | while IFS= read -r line;do echo "$(date) $line";done >> /var/tmp/simplecd/journeymonitor-analyze.log 2>&1
 <% end %>
 
-#*/5 * * * * journeymonitor /usr/bin/curl <%= scope.function_hiera(['env::endpoint:monitor_api']) %> -o <%= scope.function_hiera(['app-analyze::testresults_cache_path']) %> && source /etc/journeymonitor/app-analyze-env.sh && /usr/bin/java -jar /opt/journeymonitor/analyze/journeymonitor-analyze-importer-assembly.jar <%= scope.function_hiera(['app-analyze::testresults_cache_path']) %>
+*/5 * * * * journeymonitor /usr/bin/curl <%= scope.function_hiera(['env::endpoint:monitor_api']) %> -o <%= scope.function_hiera(['app-analyze::testresults_cache_path']) %> && source /etc/journeymonitor/app-analyze-env.sh && /usr/bin/java -jar /opt/journeymonitor/analyze/journeymonitor-analyze-importer-assembly.jar <%= scope.function_hiera(['app-analyze::testresults_cache_path']) %>
