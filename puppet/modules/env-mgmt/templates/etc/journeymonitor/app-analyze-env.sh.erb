@@ -6,6 +6,6 @@ export JOURNEYMONITOR_ANALYZE_IMPORTER_CASSANDRAURI="<%= scope.function_hiera(['
 
 export JOURNEYMONITOR_ANALYZE_IMPORTER_CASSANDRAURI_TEST="<%= scope.function_hiera(['env::cassandra:uri:test_keyspace']) %>"
 
-export JOURNEYMONITOR_ANALYZE_SPARK_CASSANDRAURI="<%= scope.function_hiera(['env::cassandra:uri:analyze_keyspace']) %>"
+export JOURNEYMONITOR_ANALYZE_SPARK_CASSANDRAHOST="<%= scope.function_hiera(['env::cassandra:host']) %>"
 
 export JOURNEYMONITOR_ANALYZE_CASSANDRA_CQLSH_HOST="<%= scope.function_hiera(['env::cassandra:cqlsh_host']) %>"

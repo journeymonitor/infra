@@ -7,11 +7,13 @@ class cassandra::packages {
     source  => "puppet:///modules/cassandra/etc/apt/sources.list.d/cassandra.sources.list",
   }
 
+  # todo: check for lockfile
   exec { "add datastax apt key":
     command => "/usr/bin/curl -L https://debian.datastax.com/debian/repo_key | /usr/bin/apt-key add -",
     require => File["/etc/apt/sources.list.d/cassandra.sources.list"]
   }
 
+  # todo: check for age of lockfile (only run every 24h)
   exec { "apt-get update for cassandra":
     command => "/usr/bin/apt-get -qq -y update",
     require => [ File["/etc/apt/sources.list.d/cassandra.sources.list"], Exec["add datastax apt key"] ]

@@ -1,4 +1,4 @@
-class cassandra($cluster_name, $seed_nodes, $listen_interface) {
+class cassandra($cluster_name, $seed_nodes, $listen_interface, $rpc_address, $broadcast_rpc_address) {
 
   require cassandra::packages
 

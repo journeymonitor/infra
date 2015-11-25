@@ -92,3 +92,5 @@ env:
 `puppet/modules/env-mgmt` is the place where infrastructure-wide environment variables are managed (which are, e.g., used by the applications).
 
 Modules starting with `app-` provide the system configuration that needs to be in place for the application in question to being able to operate - however, these modules do not install the application itself (this is achieved via the SimpleCD continuous delivery setup).
+
+`puppet/modules/cronjobs` centralizes cronjob configuration - it uses hiera data from other namespaces (e.g. `app-analyze::`) in order to configure cronjobs for different apps.

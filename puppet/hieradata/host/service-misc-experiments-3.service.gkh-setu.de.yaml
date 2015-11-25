@@ -2,4 +2,4 @@
 env: prod
 role: analyze-app-slave
 cronjobs::disable_infra_ci: true
-cassandra::listen_interface: eth0
+cassandra::broadcast_rpc_address: 10.31.32.83

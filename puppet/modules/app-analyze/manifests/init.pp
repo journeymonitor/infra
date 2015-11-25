@@ -1,8 +1,9 @@
 # Additional stuff for satisfying the requirements
 # for running the ANALYZE applications
 
-class app-analyze ($cassandra_cqlsh_host = "localhost") {
+class app-analyze($cassandra_cqlsh_host) {
 
+  # We need the cassandra-tools in order to be able to run cqlsh
   require cassandra::packages
 
   service { "cassandra":

@@ -1,14 +1,23 @@
 ---
 # The following are used in certain Puppet manifests, but never in app environments
-spark-slave::master_address: service-misc-experiments-1
+spark-slave::master_address: &spark_master_address service-misc-experiments-1
 cassandra::cluster_name: JourneyMonitorProd
 cassandra::seed_nodes: 10.31.32.82,10.31.32.83,10.31.32.84
+cassandra::listen_interface: eth0
+cassandra::rpc_address: 0.0.0.0
+# Overwrite the following in host definitions, or else Spark will try to create connections
+# to 127.0.0.1:9042, because after the initial connection the driver program thinks that
+# this is the place to reach C*
+cassandra::broadcast_rpc_address: 127.0.0.1
 app-analyze::cassandra_cqlsh_host: &cassandra_cqlsh_host 10.31.32.82
+app-analyze::spark_master_address: *spark_master_address
+app-analyze::endpoint_monitor_api: &endpoint_monitor_api http://journeymonitor.com:8081/
 app-monitor::api:allowed_ips:
   - 80.69.33.177 # net-lab experiments systems come from this address
 
 # The following are used in app environments (see env-mgmt module), but never in Puppet manifests
 env::cassandra:cqlsh_host: *cassandra_cqlsh_host
+env::cassandra:host: *cassandra_cqlsh_host
 env::cassandra:uri:analyze_keyspace: cassandra://10.31.32.82:9042/analyze?host=10.31.32.83&host=10.31.32.84
 env::cassandra:uri:test_keyspace: cassandra://10.31.32.82:9042/test?host=10.31.32.83&host=10.31.32.84
-env::endpoint:monitor_api: http://journeymonitor.com:8081/
+env::endpoint:monitor_api: *endpoint_monitor_api
