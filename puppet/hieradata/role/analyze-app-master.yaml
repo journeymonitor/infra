@@ -4,8 +4,8 @@ classes:
   - spark-master
   - app-analyze
   - sbt
-  - jdk
-  - jre
+  - jdk8
+  - jre8
 
 applications:
   - analyze

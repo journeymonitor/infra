@@ -3,4 +3,4 @@ classes:
   - postfix
   - spark-slave
   - cassandra
-  - jre
+  - jre8
