@@ -19,10 +19,10 @@ others joining the development effort.
 
 The architecture of the JourneyMonitor service is modularized on different levels.
 
-On the highest level, there are currently four modules, which are called *Compartments*:
+On the highest level, there are currently four modules, which are called *Systems*:
 
 - **[INFRA](https://github.com/journeymonitor/infra)** provides the Puppet and Vagrant code that is used to set up
-  development and production environments for the applications of the other compartments
+  development and production environments for the applications of the other systems
 - **[CONTROL](https://github.com/journeymonitor/control)** contains a Symfony2 application that powers the web frontend
   at http://journeymonitor.com
 - **[MONITOR](https://github.com/journeymonitor/monitor)** contains a plain PHP application with Bash script additions
@@ -31,29 +31,29 @@ On the highest level, there are currently four modules, which are called *Compar
 - **[ANALYZE](https://github.com/journeymonitor/anaylze)** contains, among others, a Scala/Spark application that
   extracts interesting metrics from the testcase runs
 
-All four compartments form the fully featured JourneyMonitor system. The independence of the compartments is *high*:
-They do not share code, and they do not share any data. Each compartment has a technological stack that best fits its
-needs. The code for each compartment lives in its own repository.
+All four systems form the fully featured JourneyMonitor service. The independence of the systems is *high*:
+They do not share code, and they do not share any data. Each system has a technological stack that best fits its
+needs. The code for each system lives in its own repository.
 
-A compartment can be modularized, too. At this level, modules are called *Applications*. For example, the *ANALYZE*
-compartment currently contains two applications: *importer* takes care of consuming and persisting testresults from the
-*MONITOR* compartment, and the *spark* application then operates on this data in order to calculate statistics.
+A system can be modularized, too. At this level, modules are called *Applications*. For example, the *ANALYZE*
+system currently contains two applications: *importer* takes care of consuming and persisting testresults from the
+*MONITOR* system, and the *spark* application then operates on this data in order to calculate statistics.
 
-As compartments don't share data, they need to exchange data. This happens via RESTful interfaces on top of HTTP. In
+As systems don't share data, they need to exchange data. This happens via RESTful interfaces on top of HTTP. In
 this sense, applications can provide *RESTful APIs*, but this is not part of the modularization.
 
 Of course, applications are modularized, too. This, however, is implementation-specific (packages, classes, etc.).
 
 Thus, the following modularization hierarchy is practiced:
 
-                                The complete system
+                                The complete service
                                        |
                                        |
-                                       | consists of multiple Compartments
+                                       | consists of multiple Systems
                                        |
                                        |
                         |--------------|--------------|
-                  a Compartment   a Compartment    a Compartment
+                  a System   a System    a System
                         |
                         |
                         | consists of one or more Applications
@@ -65,7 +65,7 @@ Thus, the following modularization hierarchy is practiced:
 
 ### The Big Pictures
 
-#### Compartments diagram with data flow
+#### Systems diagram with data flow
 
                                        User
                                         +
