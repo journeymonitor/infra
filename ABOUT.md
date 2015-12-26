@@ -6,7 +6,7 @@ At http://journeymonitor.com, this project provides a software-as-a-service that
 test scripts which are executed regularly and alert users if a test run resulted in an error. It also provides
 ridiculously detailed performance metrics for each test run.
 
-Think of it as a web-based cron for you Selenium tests.
+Think of it as a cloud-based cron for you Selenium tests.
 
 
 ## About the project
