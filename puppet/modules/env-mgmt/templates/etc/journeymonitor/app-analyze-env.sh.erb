@@ -2,9 +2,9 @@
 
 # managed by puppet
 
-export JOURNEYMONITOR_ANALYZE_IMPORTER_CASSANDRAURI="<%= scope.function_hiera(['env::cassandra:uri:analyze_keyspace']) %>"
+export JOURNEYMONITOR_ANALYZE_CASSANDRAURI="<%= scope.function_hiera(['env::cassandra:uri:analyze_keyspace']) %>"
 
-export JOURNEYMONITOR_ANALYZE_IMPORTER_CASSANDRAURI_TEST="<%= scope.function_hiera(['env::cassandra:uri:test_keyspace']) %>"
+export JOURNEYMONITOR_ANALYZE_CASSANDRAURI_TEST="<%= scope.function_hiera(['env::cassandra:uri:test_keyspace']) %>"
 
 export JOURNEYMONITOR_ANALYZE_SPARK_CASSANDRAHOST="<%= scope.function_hiera(['env::cassandra:host']) %>"
 
