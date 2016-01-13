@@ -5,7 +5,7 @@ MAILTO=""
 * * * * * root /opt/simplecd/simplecd.sh tag travisci-build-master-* https://github.com/journeymonitor/monitor.git https://github.com/journeymonitor/monitor/commit/ 2>&1 | while IFS= read -r line;do echo "$(date) $line";done >> /var/tmp/simplecd/journeymonitor-monitor.log
 <% end %>
 
-* * * * * root sleep 30 && sudo -u journeymonitor PHP_ENV=<%= @env %> /usr/bin/php /opt/journeymonitor/monitor/bin/import.php http://127.0.0.1:8082/api/internal/testcases.json 2>&1 >> /var/tmp/journeymonitor-monitor-import.log && rm -f /etc/cron.d/journeymonitor-run-* && sudo -u journeymonitor PHP_ENV=<%= @env %> /usr/bin/php /opt/journeymonitor/monitor/bin/create.php >> /var/tmp/journeymonitor-monitor-create.log 2>&1 && chown root:root /etc/cron.d/journeymonitor-run-* && chmod 0644 /etc/cron.d/journeymonitor-run-*
+* * * * * root sleep 30 && sudo -u journeymonitor PHP_ENV=<%= @env %> /usr/bin/php /opt/journeymonitor/monitor/bin/import.php http://127.0.0.1:8082/api/internal/testcases.json 2>&1 | while IFS= read -r line;do echo "$(date) $line";done >> /var/tmp/journeymonitor-monitor-import.log && rm -f /etc/cron.d/journeymonitor-run-* && sudo -u journeymonitor PHP_ENV=<%= @env %> /usr/bin/php /opt/journeymonitor/monitor/bin/create.php 2>&1 | while IFS= read -r line;do echo "$(date) $line";done >> /var/tmp/journeymonitor-monitor-create.log && chown root:root /etc/cron.d/journeymonitor-run-* && chmod 0644 /etc/cron.d/journeymonitor-run-*
 
 # Selenium runs create a lot of cruft in /tmp that needs to be cleaned up
 */10 * * * * root /usr/bin/find /tmp -name "seleniumSslSupport*" -type d -mmin +60 | xargs rm -rf
