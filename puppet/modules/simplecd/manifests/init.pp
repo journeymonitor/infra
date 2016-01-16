@@ -7,6 +7,7 @@ class simplecd {
 
   exec { "install simplecd":
     command => "/usr/bin/curl https://raw.githubusercontent.com/manuelkiessling/simplecd/master/simplecd.sh -o /opt/simplecd/simplecd.sh",
+    user    => "root",
     require => File["/opt/simplecd"],
   }
 
