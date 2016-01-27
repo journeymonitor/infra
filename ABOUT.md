@@ -32,8 +32,9 @@ On the highest level, there are currently four modules, which are called *System
   extracts interesting metrics from the testcase runs
 
 All four systems form the fully featured JourneyMonitor service. The independence of the systems is *high*:
-They do not share code, and they do not share any data. Each system has a technological stack that best fits its
-needs. The code for each system lives in its own repository.
+They do not share code, and they do not share data. Each system has a technological stack that best fits its
+needs. The code for each system lives in its own repository. With this approach, JourneyMonitor follows the idea
+of *Self-contained Systems*, as described at [scs-architecture.org](http://scs-architecture.org).
 
 A system can be modularized, too. At this level, modules are called *Applications*. For example, the *ANALYZE*
 system currently contains two applications: *importer* takes care of consuming and persisting testresults from the
