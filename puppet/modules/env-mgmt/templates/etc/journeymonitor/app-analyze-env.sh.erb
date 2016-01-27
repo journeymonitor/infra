@@ -9,3 +9,5 @@ export JOURNEYMONITOR_ANALYZE_CASSANDRAURI_TEST="<%= scope.function_hiera(['env:
 export JOURNEYMONITOR_ANALYZE_SPARK_CASSANDRAHOST="<%= scope.function_hiera(['env::cassandra:host']) %>"
 
 export JOURNEYMONITOR_ANALYZE_CASSANDRA_CQLSH_HOST="<%= scope.function_hiera(['env::cassandra:cqlsh_host']) %>"
+
+export JOURNEYMONITOR_ANALYZE_API_PLAY2_APPLICATION_SECRET="`cat /etc/journeymonitor/analyze_api_play2_application_secret`"
