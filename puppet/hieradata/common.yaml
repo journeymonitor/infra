@@ -11,6 +11,7 @@ classes:
 env: dev
 role: control-and-monitor-app-server
 applications: []
+other_cronjobs: []
 
 nginx::app_env: "%{hiera('env')}"
 nginx::user: www-data
