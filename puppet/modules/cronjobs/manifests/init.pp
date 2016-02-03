@@ -2,7 +2,7 @@ define createCronjobFile($env) {
   file { "/etc/cron.d/journeymonitor-${name}":
     owner   => "root",
     group   => "root",
-    mode    => 0644,
+    mode    => "0644",
     content => template("cronjobs/etc/cron.d/journeymonitor-${name}.erb"),
     require => [ File["/etc/cron.d"] ]
   }
@@ -24,7 +24,7 @@ class cronjobs (
   file { "/etc/cron.d/journeymonitor-infra":
     owner   => "root",
     group   => "root",
-    mode    => 0644,
+    mode    => "0644",
     content => template("cronjobs/etc/cron.d/journeymonitor-infra.erb"),
     require => [ File["/etc/cron.d"], File["/opt/simplecd/simplecd.sh"] ]
   }
