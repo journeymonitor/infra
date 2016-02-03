@@ -9,8 +9,8 @@ define createCronjobFile($env) {
 }
 
 class cronjobs (
-  $applications = hiera_array("applications", "_empty_"),
-  $other_cronjobs = hiera_array("other_cronjobs", "_empty_"),
+  $applications = hiera_array("applications", []),
+  $other_cronjobs = hiera_array("other_cronjobs", []),
   $env,
   $disable_infra_ci = false) {
 
@@ -29,15 +29,15 @@ class cronjobs (
     require => [ File["/etc/cron.d"], File["/opt/simplecd/simplecd.sh"] ]
   }
 
-  if $applications != "_empty_" {
+  if $applications != [] {
     createCronjobFile { $applications:
-      env         => $env,
+      env => $env,
     }
   }
 
-  if $other_cronjobs != "_empty_" {
+  if $other_cronjobs != [] {
     createCronjobFile { "other-${$other_cronjobs}":
-      env         => $env,
+      env => $env,
     }
   }
 
