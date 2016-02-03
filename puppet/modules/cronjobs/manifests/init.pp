@@ -1,4 +1,4 @@
-define createCronjobFile($application, $env) {
+define createCronjobFile($env) {
   file { "/etc/cron.d/journeymonitor-${name}":
     owner   => "root",
     group   => "root",
@@ -8,7 +8,11 @@ define createCronjobFile($application, $env) {
   }
 }
 
-class cronjobs ($applications = hiera_array("applications"), $env, $disable_infra_ci = false) {
+class cronjobs (
+  $applications = hiera_array("applications"),
+  $other_cronjobs = hiera_array("other_cronjobs"),
+  $env,
+  $disable_infra_ci = false) {
 
   file { "/etc/cron.d":
     ensure  => "directory",
@@ -26,7 +30,10 @@ class cronjobs ($applications = hiera_array("applications"), $env, $disable_infr
   }
 
   createCronjobFile { $applications:
-    application => $applications,
+    env         => $env,
+  }
+
+  createCronjobFile { "other-${$other_cronjobs}":
     env         => $env,
   }
 

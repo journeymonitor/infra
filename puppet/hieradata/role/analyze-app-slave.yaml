@@ -4,3 +4,6 @@ classes:
   - spark-slave
   - cassandra
   - jre8
+
+other_cronjobs:
+  - spark-slave-cleanup
