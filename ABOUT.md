@@ -2,7 +2,7 @@
 
 ## About the service
 
-At http://journeymonitor.com, this project provides a software-as-a-service that allows users to upload Selenium
+At http://journeymonitor.com, the project provides a software-as-a-service that allows users to upload Selenium
 test scripts which are executed regularly and alert users if a test run resulted in an error. It also provides
 ridiculously detailed performance metrics for each test run.
 
