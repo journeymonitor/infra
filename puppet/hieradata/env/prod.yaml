@@ -14,6 +14,7 @@ app-analyze::spark_master_address: *spark_master_address
 app-analyze::endpoint_monitor_api: &endpoint_monitor_api http://journeymonitor.com:8081/
 app-monitor::api:allowed_ips:
   - 80.69.33.177 # net-lab experiments systems come from this address
+app-control::endpoint_analyze_api: http://http://80.69.45.171/
 
 # The following are used in app environments (see env-mgmt module), but never in Puppet manifests
 env::cassandra:cqlsh_host: *cassandra_cqlsh_host
