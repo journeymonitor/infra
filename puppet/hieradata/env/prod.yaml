@@ -14,7 +14,7 @@ app-analyze::spark_master_address: *spark_master_address
 app-analyze::endpoint_monitor_api: &endpoint_monitor_api http://journeymonitor.com:8081/
 app-monitor::api:allowed_ips:
   - 80.69.33.177 # net-lab experiments systems come from this address
-app-control::endpoint_analyze_api: http://http://80.69.45.171/
+app-control::endpoint_analyze_api: http://80.69.45.171:8081/
 
 # The following are used in app environments (see env-mgmt module), but never in Puppet manifests
 env::cassandra:cqlsh_host: *cassandra_cqlsh_host
@@ -22,3 +22,6 @@ env::cassandra:host: *cassandra_cqlsh_host
 env::cassandra:uri:analyze_keyspace: cassandra://10.31.32.82:9042/analyze?host=10.31.32.83&host=10.31.32.84
 env::cassandra:uri:test_keyspace: cassandra://10.31.32.82:9042/test?host=10.31.32.83&host=10.31.32.84
 env::endpoint:monitor_api: *endpoint_monitor_api
+env::app-analyze:api:listen_port: 8081
+# User journeymonitor can't write to /var/run, thus we write the pid to /var/tmp
+env::app-analyze:api:pidfile_path: /var/tmp/journeymonitor-analyze-api.pid

@@ -11,3 +11,7 @@ export JOURNEYMONITOR_ANALYZE_SPARK_CASSANDRAHOST="<%= scope.function_hiera(['en
 export JOURNEYMONITOR_ANALYZE_CASSANDRA_CQLSH_HOST="<%= scope.function_hiera(['env::cassandra:cqlsh_host']) %>"
 
 export JOURNEYMONITOR_ANALYZE_API_PLAY2_APPLICATION_SECRET="`cat /etc/journeymonitor/analyze_api_play2_application_secret`"
+
+export JOURNEYMONITOR_ANALYZE_API_LISTEN_PORT="<%= scope.function_hiera(['env::app-analyze:api:listen_port']) %>"
+
+export JOURNEYMONITOR_ANALYZE_API_PIDFILE_PATH="<%= scope.function_hiera(['env::app-analyze:api:pidfile_path']) %>"
