@@ -15,7 +15,7 @@ server {
 		fastcgi_pass unix:/var/run/php5-fpm.sock;
 		fastcgi_index app<% if @app_env == "dev" %>_dev<% end %>.php;
 		include fastcgi_params;
-		fastcgi_param JOURNEYMONITOR_ENDPOINT_ANALYZE_API "<%= scope.function_hiera(['app-control::endpoint_analyze_api']) %>";
+		fastcgi_param SYMFONY__JOURNEYMONITOR__ENDPOINT__ANALYZE__API '<%= scope.function_hiera(['app-control::endpoint_analyze_api']) %>';
 	}
 
 	location / {
