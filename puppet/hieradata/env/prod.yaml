@@ -1,5 +1,6 @@
 ---
 # The following are used in certain Puppet manifests, but never in app environments
+# A parameter name start with the name of the module that uses it
 spark-slave::master_address: &spark_master_address service-misc-experiments-1
 cassandra::cluster_name: JourneyMonitorProd
 cassandra::seed_nodes: 10.31.32.82,10.31.32.83,10.31.32.84
@@ -14,7 +15,8 @@ app-analyze::spark_master_address: *spark_master_address
 app-analyze::endpoint_monitor_api: &endpoint_monitor_api http://journeymonitor.com:8081/
 app-monitor::api:allowed_ips:
   - 80.69.33.177 # net-lab experiments systems come from this address
-nginx::endpoint_analyze_api: &endpoint_analyze_api http://80.69.45.171:8081/
+cronjobs::endpoint_monitor_api: *endpoint_monitor_api
+cronjobs::endpoint_analyze_api: http://80.69.45.171:8081/
 
 # The following are used in app environments (see env-mgmt module), but never in Puppet manifests
 env::cassandra:cqlsh_host: *cassandra_cqlsh_host
@@ -22,7 +24,6 @@ env::cassandra:host: *cassandra_cqlsh_host
 env::cassandra:uri:analyze_keyspace: cassandra://10.31.32.82:9042/analyze?host=10.31.32.83&host=10.31.32.84
 env::cassandra:uri:test_keyspace: cassandra://10.31.32.82:9042/test?host=10.31.32.83&host=10.31.32.84
 env::endpoint:monitor_api: *endpoint_monitor_api
-env::endpoint:analyze_api: *endpoint_analyze_api
 env::app-analyze:api:listen_port: 8081
 # User journeymonitor can't write to /var/run, thus we write the pid to /var/tmp
 env::app-analyze:api:pidfile_path: /var/tmp/journeymonitor-analyze-api.pid
