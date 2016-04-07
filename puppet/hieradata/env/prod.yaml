@@ -1,6 +1,6 @@
 ---
 # The following are used in certain Puppet manifests, but never in app environments
-# A parameter name start with the name of the module that uses it
+# A parameter name starts with the name of the module that uses it
 spark-slave::master_address: &spark_master_address service-misc-experiments-1
 cassandra::cluster_name: JourneyMonitorProd
 cassandra::seed_nodes: 10.31.32.82,10.31.32.83,10.31.32.84
