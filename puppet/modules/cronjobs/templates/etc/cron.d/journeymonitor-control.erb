@@ -7,4 +7,4 @@ MAILTO=""
 
 * * * * * root sudo -u www-data /usr/bin/php /opt/journeymonitor/control/bin/console journeymonitor:control:import:testresults <%= scope.function_hiera(['cronjobs::endpoint_monitor_api']) %> --env=<%= @env %> 2>&1 | while IFS= read -r line;do echo "$(date) $line";done >> /var/tmp/journeymonitor-control-import-testresults.log
 
-#* * * * * root sudo -u www-data /usr/bin/php /opt/journeymonitor/control/bin/console journeymonitor:control:import:statistics <%= scope.function_hiera(['cronjobs::endpoint_analyze_api']) %> --env=<%= @env %> 2>&1 | while IFS= read -r line;do echo "$(date) $line";done >> /var/tmp/journeymonitor-control-import-statistics.log
+#* * * * * root sudo -u www-data /usr/bin/php /opt/journeymonitor/control/bin/console journeymonitor:control:import:statistics <%= scope.function_hiera(['cronjobs::endpoint_analyze_api']) %>testcases/:testcaseId/statistics/latest/?minTestresultDatetimeRun=:minTestresultDatetimeRun --env=<%= @env %> 2>&1 | while IFS= read -r line;do echo "$(date) $line";done >> /var/tmp/journeymonitor-control-import-statistics.log
