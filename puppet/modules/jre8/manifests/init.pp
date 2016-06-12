@@ -14,4 +14,9 @@ class jre8 {
     require => [ Exec["add openjdk-8-jdk ppa for jre8"], Exec["apt-get update"] ]
   }
 
+  exec { "make openjdk-8-jre the default Java":
+    command => "/usr/bin/update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java",
+    require => Package["openjdk-8-jre-headless"]
+  }
+
 }

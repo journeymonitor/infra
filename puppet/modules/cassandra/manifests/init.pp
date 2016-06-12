@@ -25,7 +25,7 @@ class cassandra($cluster_name, $seed_nodes, $listen_interface, $rpc_address, $br
     hasstatus  => true,
     hasrestart => true,
     enable     => true,
-    require    => [ Class["cassandra::packages"], Exec["initialize cassandra cluster"] ],
+    require    => [ Class["jre8"], Class["cassandra::packages"], Exec["initialize cassandra cluster"] ],
   }
 
   # @TODO: nproc limit
