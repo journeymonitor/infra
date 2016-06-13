@@ -2,7 +2,7 @@ class selenium {
 
   package { ["xvfb", "firefox"]:
     ensure => "installed",
-    require => [ Class["jre"], Exec["apt-get update"] ],
+    require => [ Class["jre7"], Exec["apt-get update"] ],
   }
 
   file { "/opt/selenese-runner-java":

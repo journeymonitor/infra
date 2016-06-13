@@ -14,9 +14,14 @@ class spark-master ($worker_webui_startport = 8081) {
   }
 
   exec { "run spark master":
+    environment => [
+      "SPARK_WORKER_WEBUI_PORT=${worker_webui_startport}",
+      "JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64",
+      "JRE_HOME=/usr/lib/jvm/java-7-openjdk-amd64/jre",
+    ],
     command => "/bin/bash /opt/spark-1.5.1-bin-hadoop-2.6_scala-2.11/sbin/start-master.sh >> /var/log/spark-master.log 2>&1",
     unless  => '/bin/ps axu | /bin/grep "java" | /bin/grep "org.apache.spark.deploy.master.Master" | /bin/grep -v "grep"',
-    require => [ Exec["install spark"], Class["jre8"] ],
+    require => [ Exec["install spark"], Class["jre7"] ],
   }
 
   /*

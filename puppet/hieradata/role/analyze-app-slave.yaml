@@ -3,6 +3,7 @@ classes:
   - postfix
   - spark-slave
   - cassandra
+  - jre7
   - jre8
 
 other_cronjobs:

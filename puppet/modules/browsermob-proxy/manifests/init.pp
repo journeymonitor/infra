@@ -15,9 +15,13 @@ class browsermob-proxy {
   }
 
   exec { "run browsermob-proxy":
+    environment => [
+      "JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64",
+      "JRE_HOME=/usr/lib/jvm/java-7-openjdk-amd64/jre",
+    ],
     command => "/usr/bin/nohup /bin/bash /opt/browsermob-proxy-2.0.0/bin/browsermob-proxy --address 127.0.0.1 --port 9090 --ttl 3600 >> /var/log/browsermob-proxy.log 2>&1 &",
     unless  => '/bin/ps axu | /bin/grep "java -classpath :/opt/browsermob-proxy-2.0.0" | /bin/grep -v "grep"',
-    require => [ Class["jre"], Package["unzip"], Exec["install browsermob-proxy"] ],
+    require => [ Class["jre7"], Package["unzip"], Exec["install browsermob-proxy"] ],
   }
 
 }

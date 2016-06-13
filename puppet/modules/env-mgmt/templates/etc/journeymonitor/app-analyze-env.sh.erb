@@ -15,3 +15,10 @@ export JOURNEYMONITOR_ANALYZE_API_PLAY2_APPLICATION_SECRET="`cat /etc/journeymon
 export JOURNEYMONITOR_ANALYZE_API_LISTEN_PORT="<%= scope.function_hiera(['env::app-analyze:api:listen_port']) %>"
 
 export JOURNEYMONITOR_ANALYZE_API_PIDFILE_PATH="<%= scope.function_hiera(['env::app-analyze:api:pidfile_path']) %>"
+
+
+# Systems can have several version of Java installed, therefore make sure we use the correct one
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+export JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
