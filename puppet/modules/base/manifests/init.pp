@@ -15,7 +15,8 @@ class base {
       "g++",
       "curl",
       "sqlite",
-      "git"
+      "git",
+      "software-properties-common"  # for add-apt-repository
     ]:
       ensure => present,
       require => Exec["apt-get update"],
