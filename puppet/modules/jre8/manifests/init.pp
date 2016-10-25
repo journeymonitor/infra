@@ -5,9 +5,14 @@ class jre8 {
     creates => "/etc/apt/sources.list.d/openjdk-r-ppa-trusty.list"
   }
 
+  exec { "apt-get update after adding openjdk-8-jdk ppa":
+    command => "/usr/bin/apt-get update",
+    require => [ Exec["add openjdk-8-jdk ppa for jre8"] ]
+  }
+
   package { ["openjdk-8-jre-headless"]:
     ensure  => "installed",
-    require => [ Exec["add openjdk-8-jdk ppa for jre8"], Exec["apt-get update"] ]
+    require => [ Exec["add openjdk-8-jdk ppa for jre8"], Exec["apt-get update after adding openjdk-8-jdk ppa"] ]
   }
 
   exec { "make openjdk-8-jre the default Java":

@@ -12,10 +12,12 @@ cassandra::rpc_address: 0.0.0.0
 cassandra::broadcast_rpc_address: 127.0.0.1
 app-analyze::cassandra_cqlsh_host: &cassandra_cqlsh_host 127.0.0.1
 app-analyze::spark_master_address: *spark_master_address
-app-analyze::endpoint_monitor_api: &endpoint_monitor_api http://127.0.0.1:8081/
+app-analyze::endpoint_monitor_api: &endpoint_monitor_api http://journeymonitor-monitor:8081/
+app-analyze::endpoint_control_api: &endpoint_control_api http://journeymonitor-control:8082/
 app-monitor::api:allowed_ips:
   - 127.0.0.1
 cronjobs::endpoint_monitor_api: *endpoint_monitor_api
+cronjobs::endpoint_control_api: *endpoint_control_api
 cronjobs::endpoint_analyze_api: "http://127.0.0.1:%{hiera('env::app-analyze:api:listen_port')}/"
 
 # The following are used in app environments (see env-mgmt module), but never in Puppet manifests

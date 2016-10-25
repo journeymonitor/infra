@@ -1,22 +1,15 @@
 ---
 classes:
+  - base-minimal
   - base
-  - selenium
-  - browsermob-proxy
   - php5
   - composer
   - user-journeymonitor
   - nodejs
-  - phantomjs
   - bower
-  - simplecd
   - cronjobs
   - postfix
   - nginx
-  - app-monitor
-  - jre7
-  - jre8
 
 applications:
-  - monitor
   - control

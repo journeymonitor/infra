@@ -2,7 +2,7 @@
 
 server {
 
-	server_name journeymonitor.com www.journeymonitor.com <% if @app_env == "dev" %>192.168.59.99<% end %>;
+	server_name journeymonitor.com www.journeymonitor.com <% if @app_env == "dev" %>127.0.0.1<% end %>;
 	listen 0.0.0.0:80;
 	access_log /var/log/nginx/journeymonitor.com.access.log;
 	error_log /var/log/nginx/journeymonitor.com.error.log;
@@ -39,6 +39,7 @@ server {
 
 	server_name control-api;
 	listen 127.0.0.1:8082;
+	<% if @app_env == "dev" %>listen 0.0.0.0:8082;<% end %>
 	access_log /var/log/nginx/journeymonitor-control-api.access.log;
 	error_log /var/log/nginx/journeymonitor-control-api.error.log;
 	charset utf-8;
@@ -99,6 +100,7 @@ server {
 
 	server_name monitor-media;
 	listen 127.0.0.1:8083;
+	<% if @app_env == "dev" %>listen 0.0.0.0:8083;<% end %>
 	access_log /var/log/nginx/journeymonitor-monitor-media.access.log;
 	error_log /var/log/nginx/journeymonitor-monitor-media.error.log;
 	charset utf-8;

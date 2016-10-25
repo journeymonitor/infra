@@ -1,5 +1,6 @@
 ---
 classes:
+  - base
   - php5
   - composer
   - user-journeymonitor

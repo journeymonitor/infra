@@ -1,5 +1,6 @@
 ---
 classes:
+  - base
   - postfix
   - spark-master
   - app-analyze
