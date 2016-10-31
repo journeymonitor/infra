@@ -1,0 +1,17 @@
+FROM ubuntu:14.04
+
+USER root
+
+WORKDIR /root
+
+RUN mkdir -p /root/docker-assets && mkdir -p /opt/journeymonitor/monitor
+
+COPY infra/docker/assets-monitor/ /root/docker-assets
+
+COPY infra/ /root/docker-assets/infra
+
+COPY monitor/ /opt/journeymonitor/monitor
+
+RUN /bin/bash /root/docker-assets/install-container-image.sh
+
+CMD /bin/bash /root/docker-assets/boot-application.sh

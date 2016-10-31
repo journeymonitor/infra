@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+
+  control:
+    build:
+      context: ../../
+      dockerfile: infra/docker/Dockerfile-control
+    volumes:
+      - /opt/journeymonitor/control/var/cache
+      - /opt/journeymonitor/control/var/logs
+      - ../../control:/opt/journeymonitor/control
+      - ./assets-control:/root/docker-assets
+      - ../:/root/docker-assets/infra
+    ports:
+      - "8080:80"
+      - "8082:8082"
+
+  monitor:
+    build:
+      context: ../../
+      dockerfile: infra/docker/Dockerfile-monitor
+    volumes:
+      - ../../monitor:/opt/journeymonitor/monitor
+      - ./assets-monitor:/root/docker-assets
+      - ../:/root/docker-assets/infra
+    ports:
+      - "9080:80"
+      - "9081:8081"
+      - "9083:8083"
