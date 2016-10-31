@@ -23,6 +23,12 @@ class nginx ($app_env = "prod", $user = "www-data") {
     notify  => Service["nginx"],
   }
 
+  file { "/etc/nginx/sites-enabled/default":
+    ensure  => "absent",
+    require => [ Package["nginx"], Package["php5-fpm"] ],
+    notify  => Service["nginx"],
+  }
+
   file { "/etc/nginx/sites-enabled/journeymonitor.com":
     ensure  => "link",
     target  => "/etc/nginx/sites-available/journeymonitor.com",
@@ -36,7 +42,7 @@ class nginx ($app_env = "prod", $user = "www-data") {
     hasrestart => true,
     restart    => "/etc/init.d/nginx configtest && /etc/init.d/nginx reload", # Only restart if configuration is okay
     enable     => true,
-    require    => [ Package["nginx"], Package["php5-fpm"] ],
+    require    => [ File["/etc/nginx/sites-enabled/journeymonitor.com"], Package["nginx"], Package["php5-fpm"] ],
   }
 
 }

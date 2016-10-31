@@ -2,7 +2,7 @@ version: '2'
 
 services:
 
-  control:
+  journeymonitor-control:
     build:
       context: ../../
       dockerfile: infra/docker/Dockerfile-control
@@ -16,7 +16,7 @@ services:
       - "8080:80"
       - "8082:8082"
 
-  monitor:
+  journeymonitor-monitor:
     build:
       context: ../../
       dockerfile: infra/docker/Dockerfile-monitor

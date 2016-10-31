@@ -2,6 +2,8 @@
 
 set -e
 
+usermod -u 1000 www-data
+
 cd /opt/journeymonitor/monitor
 composer install
 sudo -u journeymonitor make migrations
