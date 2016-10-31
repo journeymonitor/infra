@@ -1,26 +1,22 @@
 class nodejs {
 
-  file { "/opt/puppet/install/node-v0.12.2.tar.gz":
+  file { "/opt/puppet/install/nodesource_nodejs_setup_7.x.sh":
     owner   => "root",
     group   => "root",
     mode    => 0755,
-    source  => "puppet:///modules/nodejs/opt/puppet/install/node-v0.12.2.tar.gz",
+    source  => "puppet:///modules/nodejs/opt/puppet/install/nodesource_nodejs_setup_7.x.sh",
     require => File["/opt/puppet/install"],
   }
 
-  file { "/opt/puppet/install/install-nodejs.sh":
-    owner   => "root",
-    group   => "root",
-    mode    => 0755,
-    source  => "puppet:///modules/nodejs/opt/puppet/install/install-nodejs.sh",
-    require => File["/opt/puppet/install"],
+  exec { "setup nodesource nodejs":
+    command => "/bin/bash /opt/puppet/install/nodesource_nodejs_setup_7.x.sh > /opt/puppet/install/nodesource_nodejs_setup_7.x.log 2>&1",
+    creates => "/etc/apt/sources.list.d/nodesource.list",
+    require => [ File[ "/opt/puppet/install/nodesource_nodejs_setup_7.x.sh"] ],
   }
 
-  exec { "install nodejs":
-    command => "/bin/bash /opt/puppet/install/install-nodejs.sh > /opt/puppet/install/install-nodejs.log 2>&1",
-    timeout => 1200,
-    unless  => "/usr/bin/test \"`/usr/local/bin/node --version`\" = \"v0.12.2\"",
-    require => [ Package[ ["make", "g++"] ], File[ ["/opt/puppet/install/install-nodejs.sh", "/opt/puppet/install/node-v0.12.2.tar.gz"] ] ],
+  package { ["nodejs"]:
+    ensure => "installed",
+    require => Exec["setup nodesource nodejs"],
   }
 
 }
