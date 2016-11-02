@@ -11,6 +11,12 @@ class cassandra($cluster_name, $seed_nodes, $listen_interface, $rpc_address, $br
     notify  => Service["cassandra"]
   }
 
+  exec { "create swapfile for cassandra":
+    command => "/bin/dd if=/dev/zero of=/swapfile1 bs=1M count=2048 && /bin/chmod 0600 /swapfile1 && /sbin/mkswap /swapfile1 && /sbin/swapon /swapfile1 && /bin/cat /etc/fstab | /bin/grep swapfile1 || echo '/swapfile1 swap swap defaults 0 0' >> /etc/fstab",
+    creates => "/swapfile1",
+    require => [ Package["cassandra"], File["/etc/cassandra/cassandra.yaml"] ]
+  }
+
   # See http://docs.datastax.com/en/cassandra/2.2/cassandra/install/installDeb.html
   # The deb starts Cassandra after package installation, but then we don't have the
   # right cluster setup, which is why we need to throw stuff away and restart
