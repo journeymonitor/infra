@@ -16,4 +16,5 @@ sudo -u www-data php bin/console doctrine:migrations:migrate --no-interaction
 /etc/init.d/php5-fpm start
 /etc/init.d/nginx start
 
+echo "All done."
 tail -f /dev/null # keep running

@@ -21,4 +21,5 @@ JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64 JRE_HOME=/usr/lib/jvm/java-7-openjdk
 /etc/init.d/php5-fpm start
 /etc/init.d/nginx start
 
+echo "All done."
 tail -f /dev/null # keep running
