@@ -21,8 +21,8 @@ The architecture of the JourneyMonitor service is modularized on different level
 
 On the highest level, there are currently four modules, which are called *Systems*:
 
-- **[INFRA](https://github.com/journeymonitor/infra)** provides the Puppet and Vagrant code that is used to set up
-  development and production environments for the applications of the other systems
+- **[INFRA](https://github.com/journeymonitor/infra)** provides the Puppet and Docker Compose code that is used to set
+  up development and production environments for the applications of the other systems
 - **[CONTROL](https://github.com/journeymonitor/control)** contains a Symfony2 application and Scala applications
   which together power the web frontend at http://journeymonitor.com
 - **[MONITOR](https://github.com/journeymonitor/monitor)** contains a plain PHP application with Bash script additions
@@ -101,7 +101,8 @@ Thus, the following modularization hierarchy is practiced:
                                       |           |
                                       +-----------+
                                       - manages
+                                        setup and
                                         configuration
                                         of systems
                                       * Puppet
-                                      * Vagrant
+                                      * Docker Compose

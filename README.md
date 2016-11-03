@@ -16,26 +16,28 @@ Please see [ABOUT.md](ABOUT.md) for more information.
 
 ### Setting up a development environment
 
-- Install VirtualBox
-- Install Vagrant
+The officially supported way to run a development environment is to use Docker and Docker Compose. It has been verified
+to work on Mac OS X with Docker Machine and Docker for Mac.
+
+- Install Docker
+- Install Docker Compose
 - Install Git
 - `git clone git@github.com:journeymonitor/control.git`
 - `git clone git@github.com:journeymonitor/monitor.git`
 - `git clone git@github.com:journeymonitor/infra.git`
-- `cd infra`
-- `vagrant up`
+- `cd infra/docker`
+- `docker-compose up`
 
-This gives you a virtual machine at IP `192.168.59.99`. Right now, the inital setup takes
-quite some time because Node.js is compiled from sources.
+This gives you two running Docker containers, `journeymonitor-control` and `journeymonitor-monitor`. 
 
-The following applies to this machine:
+- Within the `control` container, `/opt/journeymonitor/control` is a mirror
+  of the root directory of the `control` git clone.
+- Within the `monitor` container, `/opt/journeymonitor/monitor` is a mirror
+  of the root directory of the `monitor` git clone.
 
-- If there is a change to the master branch of this repository, the changes are applied
-  to the machine via puppet - that is, the VM automatically stays up to date. Within the
-  VM, the file `/etc/cron.d/journeymonitor-infra` is responsible for this.
-- Within the VM, `/vagrant` is a mirror of the root directory of the `infra` git clone itself.
-- Within the VM, `/opt/journeymonitor/control` is a mirror of the root directory of the `control` git clone.
-- Within the VM, `/opt/journeymonitor/monitor` is a mirror of the root directory of the `monitor` git clone.
+If you are using Docker for Mac, you can access the web UI at http://localhost:8080.
+
+If you are using Docker Machine, running `echo "http://$(docker-machine ip):8080"` will print the URI you need to open.
 
 
 ### Setting up a production environment
