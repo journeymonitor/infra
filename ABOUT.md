@@ -23,12 +23,12 @@ On the highest level, there are currently four modules, which are called *System
 
 - **[INFRA](https://github.com/journeymonitor/infra)** provides the Puppet and Vagrant code that is used to set up
   development and production environments for the applications of the other systems
-- **[CONTROL](https://github.com/journeymonitor/control)** contains a Symfony2 application that powers the web frontend
-  at http://journeymonitor.com
+- **[CONTROL](https://github.com/journeymonitor/control)** contains a Symfony2 application and Scala applications
+  which together power the web frontend at http://journeymonitor.com
 - **[MONITOR](https://github.com/journeymonitor/monitor)** contains a plain PHP application with Bash script additions
   that does the actual heavy-lifting of running the testcases against a Firefox/Selenium setup and collecting the
   results
-- **[ANALYZE](https://github.com/journeymonitor/anaylze)** contains, among others, a Scala/Spark application that
+- **[ANALYZE](https://github.com/journeymonitor/anaylze)** contains, among others, a Scala/Spark application which
   extracts interesting metrics from the testcase runs
 
 All four systems form the fully featured JourneyMonitor service. The independence of the systems is *high*:

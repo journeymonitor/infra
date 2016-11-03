@@ -8,7 +8,7 @@ server {
 	error_log /var/log/nginx/journeymonitor.com.error.log;
 	charset utf-8;
 
-	root /opt/journeymonitor/control/web;
+	root /opt/journeymonitor/control/php/web;
 	index index.php;
 
 	location ~ \.php$ {
@@ -44,7 +44,7 @@ server {
 	error_log /var/log/nginx/journeymonitor-control-api.error.log;
 	charset utf-8;
 
-	root /opt/journeymonitor/control/web;
+	root /opt/journeymonitor/control/php/web;
 	index index.php;
 
 	location ~ \.php$ {

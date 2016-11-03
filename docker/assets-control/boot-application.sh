@@ -4,7 +4,7 @@ set -e
 
 usermod -u 1000 www-data
 
-cd /opt/journeymonitor/control
+cd /opt/journeymonitor/control/php
 chown -R www-data:www-data var/cache/ var/logs
 sudo -u www-data make php-dependencies
 make js-dependencies

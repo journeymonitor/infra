@@ -7,8 +7,8 @@ services:
       context: ../../
       dockerfile: infra/docker/Dockerfile-control
     volumes:
-      - /opt/journeymonitor/control/var/cache
-      - /opt/journeymonitor/control/var/logs
+      - /opt/journeymonitor/control/php/var/cache
+      - /opt/journeymonitor/control/php/var/logs
       - ../../control:/opt/journeymonitor/control
       - ./assets-control:/root/docker-assets
       - ../:/root/docker-assets/infra
