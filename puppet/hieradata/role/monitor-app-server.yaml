@@ -7,7 +7,6 @@ classes:
   - composer
   - user-journeymonitor
   - nodejs
-  - phantomjs
   - bower
   - simplecd
   - cronjobs
