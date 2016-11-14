@@ -18,7 +18,7 @@ app-monitor::api:allowed_ips:
   - 127.0.0.1
 cronjobs::endpoint_monitor_api: *endpoint_monitor_api
 cronjobs::endpoint_control_api: *endpoint_control_api
-cronjobs::endpoint_analyze_api: "http://127.0.0.1:%{hiera('env::app-analyze:api:listen_port')}/"
+cronjobs::endpoint_analyze_api: &endpoint_analyze_api "http://127.0.0.1:%{hiera('env::app-analyze:api:listen_port')}/"
 
 # The following are used in app environments (see env-mgmt module), but never in Puppet manifests
 env::cassandra:cqlsh_host: *cassandra_cqlsh_host
@@ -26,6 +26,7 @@ env::cassandra:host: *cassandra_cqlsh_host
 env::cassandra:uri:analyze_keyspace: cassandra://127.0.0.1:9042/analyze
 env::cassandra:uri:test_keyspace: cassandra://127.0.0.1:9042/test
 env::endpoint:monitor_api: *endpoint_monitor_api
+env::endpoint:analyze_api: *endpoint_analyze_api
 env::app-analyze:api:listen_port: "8082"
 # User journeymonitor can't write to /var/run, thus we write the pid to /var/tmp
 env::app-analyze:api:pidfile_path: /var/tmp/journeymonitor-analyze-api.pid
