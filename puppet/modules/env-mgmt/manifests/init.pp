@@ -15,4 +15,12 @@ class env-mgmt {
     require => File["/etc/journeymonitor"]
   }
 
+  file { "/etc/journeymonitor/app-control-env.sh":
+    owner   => "root",
+    group   => "root",
+    mode    => 0644,
+    content => template("env-mgmt/etc/journeymonitor/app-control-env.sh.erb"),
+    require => File["/etc/journeymonitor"]
+  }
+
 }
