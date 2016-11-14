@@ -30,3 +30,4 @@ env::endpoint:analyze_api: *endpoint_analyze_api
 env::app-analyze:api:listen_port: "8081"
 # User journeymonitor can't write to /var/run, thus we write the pid to /var/tmp
 env::app-analyze:api:pidfile_path: /var/tmp/journeymonitor-analyze-api.pid
+env::app-control:sqlite:path: /var/tmp/journeymonitor-control-prod.sqlite3
