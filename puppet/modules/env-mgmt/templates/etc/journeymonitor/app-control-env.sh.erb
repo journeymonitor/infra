@@ -7,3 +7,8 @@ export SYMFONY__JOURNEYMONITOR__ENDPOINT__ANALYZE__API="<%= scope.function_hiera
 
 export JOURNEYMONITOR_ENDPOINT_ANALYZE_API="<%= scope.function_hiera(['env::endpoint:analyze_api']) %>"
 export JOURNEYMONITOR_CONTROL_DB_SQLITE_PATH="<%= scope.function_hiera(['env::app-control:sqlite:path']) %>"
+
+
+# Systems can have several version of Java installed, therefore make sure we use the correct one
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre

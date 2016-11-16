@@ -13,8 +13,11 @@ classes:
   - postfix
   - nginx
   - app-monitor
+  - app-control
   - jre7
   - jre8
+  - jdk8
+  - sbt
 
 applications:
   - monitor

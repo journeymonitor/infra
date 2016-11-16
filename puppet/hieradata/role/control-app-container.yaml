@@ -10,6 +10,9 @@ classes:
   - cronjobs
   - postfix
   - nginx
+  - jdk8
+  - sbt
+  - app-control
 
 applications:
   - control

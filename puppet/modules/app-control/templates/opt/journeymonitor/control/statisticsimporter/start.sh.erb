@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if [ -e /var/tmp/journeymonitor-control-statisticsimporter.lock ]
+then
+    echo "Found /var/tmp/journeymonitor-control-statisticsimporter.lock, skipping."
+    ls -lah /var/tmp/journeymonitor-control-statisticsimporter.lock
+    exit 0
+fi
+
+touch /var/tmp/journeymonitor-control-statisticsimporter.lock
+
+. /etc/journeymonitor/app-control-env.sh
+
+JOURNEYMONITOR_CONTROL_STATISTICSIMPORTER_MIN_TESTRESULT_DATETIME_RUN=`date -d "1 hour ago" '+%Y-%m-%d %H:%M:%S%z'` \
+    /usr/bin/java -jar /opt/journeymonitor/control/statisticsimporter/journeymonitor-control-statisticsimporter-assembly.jar
+
+rm /var/tmp/journeymonitor-control-statisticsimporter.lock
