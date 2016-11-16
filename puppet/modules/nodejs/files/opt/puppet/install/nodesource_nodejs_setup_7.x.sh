@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# This was downloaded from https://deb.nodesource.com/setup_7.x
+# This was downloaded from http://deb.nodesource.com/setup_7.x
+# Thanks to https://bugs.launchpad.net/ubuntu/+source/pycurl/+bug/1111673,
+# we need to work with http:// deb locations instead of https://
 
 # Discussion, issues and change requests at:
 #   https://github.com/nodesource/distributions
@@ -10,9 +12,9 @@
 #
 # Run as root or insert `sudo -E` before `bash`:
 #
-# curl -sL https://deb.nodesource.com/setup_7.x | bash -
+# curl -sL http://deb.nodesource.com/setup_7.x | bash -
 #   or
-# wget -qO- https://deb.nodesource.com/setup_7.x | bash -
+# wget -qO- http://deb.nodesource.com/setup_7.x | bash -
 #
 
 export DEBIAN_FRONTEND=noninteractive
@@ -92,8 +94,8 @@ ${bold}${NODENAME} is no longer actively supported!${normal}
   Use the installation script that corresponds to the version of Node.js you
   wish to install. e.g.
 
-   * ${green}https://deb.nodesource.com/setup_4.x — Node.js v4 LTS \"Argon\"${normal} (recommended)
-   * ${green}https://deb.nodesource.com/setup_6.x — Node.js v6 Current${normal}
+   * ${green}http://deb.nodesource.com/setup_4.x — Node.js v4 LTS \"Argon\"${normal} (recommended)
+   * ${green}http://deb.nodesource.com/setup_6.x — Node.js v6 Current${normal}
 
   Please see ${bold}https://github.com/nodejs/LTS/${normal} for details about which version
   may be appropriate for you.
@@ -121,8 +123,8 @@ Node.js v0.10 will cease to be actively supported in ${bold}October 2016${normal
   possible. Use the installation script that corresponds to the version of
   Node.js you wish to install. e.g.
 
-   * ${green}https://deb.nodesource.com/setup_4.x — Node.js v4 LTS \"Argon\"${normal} (recommended)
-   * ${green}https://deb.nodesource.com/setup_6.x — Node.js v6 Current${normal}
+   * ${green}http://deb.nodesource.com/setup_4.x — Node.js v4 LTS \"Argon\"${normal} (recommended)
+   * ${green}http://deb.nodesource.com/setup_6.x — Node.js v6 Current${normal}
 
   Please see ${bold}https://github.com/nodejs/LTS/${normal} for details about which version
   may be appropriate for you.
@@ -151,8 +153,8 @@ Node.js v0.12 will cease to be actively supported ${bold}at the end of 2016${nor
   possible. Use the installation script that corresponds to the version of
   Node.js you wish to install. e.g.
 
-   * ${green}https://deb.nodesource.com/setup_4.x — Node.js v4 LTS \"Argon\"${normal} (recommended)
-   * ${green}https://deb.nodesource.com/setup_6.x — Node.js v6 Current${normal}
+   * ${green}http://deb.nodesource.com/setup_4.x — Node.js v4 LTS \"Argon\"${normal} (recommended)
+   * ${green}http://deb.nodesource.com/setup_6.x — Node.js v6 Current${normal}
 
   Please see ${bold}https://github.com/nodejs/LTS/${normal} for details about which version
   may be appropriate for you.
@@ -175,15 +177,15 @@ script_deprecation_warning() {
     if [ "X${SCRSUFFIX}" == "X" ]; then
         print_bold \
 "                         SCRIPT DEPRECATION WARNING                         " "\
-This script, located at ${bold}https://deb.nodesource.com/setup${normal}, used to
+This script, located at ${bold}http://deb.nodesource.com/setup${normal}, used to
   install Node.js v0.10, is being deprecated and will eventually be made
   inactive.
 
   You should use the script that corresponds to the version of Node.js you
   wish to install. e.g.
 
-   * ${green}https://deb.nodesource.com/setup_4.x — Node.js v4 LTS \"Argon\"${normal} (recommended)
-   * ${green}https://deb.nodesource.com/setup_6.x — Node.js v6 Current${normal}
+   * ${green}http://deb.nodesource.com/setup_4.x — Node.js v4 LTS \"Argon\"${normal} (recommended)
+   * ${green}http://deb.nodesource.com/setup_6.x — Node.js v6 Current${normal}
 
   Please see ${bold}https://github.com/nodejs/LTS/${normal} for details about which version
   may be appropriate for you.
@@ -290,10 +292,10 @@ fi
 print_status "Confirming \"${DISTRO}\" is supported..."
 
 if [ -x /usr/bin/curl ]; then
-    exec_cmd_nobail "curl -sLf -o /dev/null 'https://deb.nodesource.com/${NODEREPO}/dists/${DISTRO}/Release'"
+    exec_cmd_nobail "curl -sLf -o /dev/null 'http://deb.nodesource.com/${NODEREPO}/dists/${DISTRO}/Release'"
     RC=$?
 else
-    exec_cmd_nobail "wget -qO /dev/null -o /dev/null 'https://deb.nodesource.com/${NODEREPO}/dists/${DISTRO}/Release'"
+    exec_cmd_nobail "wget -qO /dev/null -o /dev/null 'http://deb.nodesource.com/${NODEREPO}/dists/${DISTRO}/Release'"
     RC=$?
 fi
 
@@ -312,15 +314,15 @@ fi
 print_status 'Adding the NodeSource signing key to your keyring...'
 
 if [ -x /usr/bin/curl ]; then
-    exec_cmd 'curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -'
+    exec_cmd 'curl -s http://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -'
 else
-    exec_cmd 'wget -qO- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -'
+    exec_cmd 'wget -qO- http://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -'
 fi
 
 print_status "Creating apt sources list file for the NodeSource ${NODENAME} repo..."
 
-exec_cmd "echo 'deb https://deb.nodesource.com/${NODEREPO} ${DISTRO} main' > /etc/apt/sources.list.d/nodesource.list"
-exec_cmd "echo 'deb-src https://deb.nodesource.com/${NODEREPO} ${DISTRO} main' >> /etc/apt/sources.list.d/nodesource.list"
+exec_cmd "echo 'deb http://deb.nodesource.com/${NODEREPO} ${DISTRO} main' > /etc/apt/sources.list.d/nodesource.list"
+exec_cmd "echo 'deb-src http://deb.nodesource.com/${NODEREPO} ${DISTRO} main' >> /etc/apt/sources.list.d/nodesource.list"
 
 print_status 'Running `apt-get update` for you...'
 
