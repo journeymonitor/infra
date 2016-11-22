@@ -1,0 +1,4 @@
+# managed by puppet
+
+# Stupid but effective solution while the C* daemon regularly just vanishes without any apparent reason.
+* * * * * root /etc/init.d/cassandra start

@@ -34,6 +34,14 @@ class cassandra($cluster_name, $seed_nodes, $listen_interface, $rpc_address, $br
     require    => [ Class["jre8"], Class["cassandra::packages"], Exec["initialize cassandra cluster"] ],
   }
 
+  file { "/etc/cron.d/cassandra":
+    owner   => "root",
+    group   => "root",
+    mode    => 0644,
+    content => "puppet:///modules/cassandra/etc/cron.d/cassandra",
+    require => [ Class["jre8"], Class["cassandra::packages"], Exec["initialize cassandra cluster"] ],
+  }
+
   # @TODO: nproc limit
 
 }
