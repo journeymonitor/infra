@@ -1,4 +1,7 @@
 # managed by puppet
 
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
 # Stupid but effective solution while the C* daemon regularly just vanishes without any apparent reason.
 * * * * * root /etc/init.d/cassandra start
