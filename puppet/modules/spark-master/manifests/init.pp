@@ -1,10 +1,10 @@
 class spark-master ($worker_webui_startport = 8081) {
 
   file { "/tmp/spark-events":
-    ensure => "directory"
-    owner  => "journeymonitor"
-    group  => "journeymonitor"
-    mode   => 0644
+    ensure => "directory",
+    owner  => "journeymonitor",
+    group  => "journeymonitor",
+    mode   => 0644,
   }
 
   exec { "download spark":
