@@ -23,17 +23,15 @@ class cassandra::packages {
   # "cassandra" is installed first, because else we get
   # "Some packages could not be installed." from apt.
   package { [
-    "cassandra",
+    "dsc30",
   ]:
-    ensure  => "2.2.3",
     require => Exec["apt-get update for cassandra"]
   }
 
   package { [
     "cassandra-tools"
   ]:
-    ensure  => "2.2.3",
-    require => Package["cassandra"]
+    require => Package["dsc30"]
   }
 
   file { "/etc/init.d/cassandra":
