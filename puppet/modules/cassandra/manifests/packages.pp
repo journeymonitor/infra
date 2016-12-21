@@ -23,7 +23,7 @@ class cassandra::packages {
   # "cassandra" is installed first, because else we get
   # "Some packages could not be installed." from apt.
   package { [
-    "dsc30",
+    "dsc21",
     "cassandra",
   ]:
     require => Exec["apt-get update for cassandra"]

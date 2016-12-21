@@ -20,6 +20,7 @@ class cassandra($cluster_name, $seed_nodes, $listen_interface, $rpc_address, $br
   # See http://docs.datastax.com/en/cassandra/2.2/cassandra/install/installDeb.html
   # The deb starts Cassandra after package installation, but then we don't have the
   # right cluster setup, which is why we need to throw stuff away and restart
+  # TODO: Looks like this does not work reliably in all cases
   exec { "initialize cassandra cluster":
     command => "/usr/sbin/service cassandra stop; /bin/sleep 10; /bin/rm -rf /var/lib/cassandra/data/system/*; touch /opt/puppet/flags/cassandra.installreset.flag; /usr/sbin/service cassandra start",
     creates => "/opt/puppet/flags/cassandra.installreset.flag",
