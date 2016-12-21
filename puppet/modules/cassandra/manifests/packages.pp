@@ -24,6 +24,7 @@ class cassandra::packages {
   # "Some packages could not be installed." from apt.
   package { [
     "dsc30",
+    "cassandra",
   ]:
     require => Exec["apt-get update for cassandra"]
   }
