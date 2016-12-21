@@ -39,7 +39,7 @@ class cassandra::packages {
     group   => "root",
     mode    => 0755,
     source  => "puppet:///modules/cassandra/etc/init.d/cassandra",
-    require => Package["cassandra"]
+    require => Package["dsc30"]
   }
 
 }
