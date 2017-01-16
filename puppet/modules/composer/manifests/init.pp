@@ -5,7 +5,7 @@ class composer {
     group   => "root",
     mode    => 06755,
     source  => "puppet:///modules/composer/usr/bin/composer-1.0.0.phar",
-    require => [ Class["php5"] ],
+    require => [ Class["php7_1"] ],
   }
 
   file { "/usr/bin/composer":
