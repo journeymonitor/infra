@@ -6,6 +6,13 @@ class app-analyze($cassandra_cqlsh_host) {
   # We need the cassandra-tools in order to be able to run cqlsh
   require cassandra::packages
 
+  # we need maven during app deployment
+  package { [
+    "maven"
+  ]:
+    ensure  => "installed",
+  }
+
   service { "cassandra":
     ensure     => "stopped",
     hasstatus  => true,
