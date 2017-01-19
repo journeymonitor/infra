@@ -2,4 +2,4 @@
 MAILTO=""
 
 # Remove Spark work data older than 1 day
-0 0 * * * root /usr/bin/find /opt/spark-1.5.1-bin-hadoop-2.6_scala-2.11/work/* -maxdepth 0 -type d -mtime +1 | /usr/bin/xargs /bin/rm -rf
+0 0 * * * root /usr/bin/find /opt/spark-2.0.2-bin-hadoop2.7/work/* -maxdepth 0 -type d -mtime +1 | /usr/bin/xargs /bin/rm -rf
