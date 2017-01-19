@@ -2,7 +2,7 @@
 classes:
   - base-minimal
   - base
-  - php5
+  - php7_1
   - composer
   - user-journeymonitor
   - nodejs

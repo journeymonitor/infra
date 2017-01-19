@@ -13,7 +13,7 @@ sudo -u www-data php bin/console doctrine:migrations:migrate --no-interaction
 
 /etc/init.d/rsyslog start
 /usr/sbin/cron
-/etc/init.d/php5-fpm start
+/etc/init.d/php7.1-fpm start
 /etc/init.d/nginx start
 
 echo "All done."

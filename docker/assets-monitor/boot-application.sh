@@ -18,7 +18,7 @@ JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64 JRE_HOME=/usr/lib/jvm/java-7-openjdk
         --ttl 3600 \
     >> /var/log/browsermob-proxy.log 2>&1 &
 
-/etc/init.d/php5-fpm start
+/etc/init.d/php7.1-fpm start
 /etc/init.d/nginx start
 
 echo "All done."

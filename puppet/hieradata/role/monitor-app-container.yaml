@@ -3,7 +3,7 @@ classes:
   - base-minimal
   - selenium
   - browsermob-proxy
-  - php5
+  - php7_1
   - composer
   - user-journeymonitor
   - cronjobs

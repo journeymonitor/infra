@@ -1,14 +1,26 @@
 class php7_1 ($fpm_user = "www-data") {
 
   # We want a PHP 7.1-only system as far as possible
-  package { ["php5-cli", "php5-sqlite", "php5-curl", "php5-fpm", "php5-common", "php5-json", "php5-readline"]:
+  package { [
+    "php5-cli",
+    "php5-sqlite",
+    "php5-curl",
+    "php5-fpm",
+    "php5-common",
+    "php5-json",
+    "php5-readline"
+  ]:
     ensure  => absent,
     require => Exec["apt-get update"],
   }
 
   exec { "add ondrej/php ppa":
-    command => "LC_ALL=C.UTF-8 /usr/bin/add-apt-repository --yes ppa:ondrej/php",
-    creates => "/etc/apt/sources.list.d/ondrej-php-trusty.list"
+    environment => [
+      "LC_ALL=C.UTF-8",
+    ],
+    command => "/usr/bin/add-apt-repository --yes ppa:ondrej/php",
+    creates => "/etc/apt/sources.list.d/ondrej-php-trusty.list",
+    require => Package[ "software-properties-common" ]
   }
 
   exec { "apt-get update after adding ondrej/php ppa":
@@ -16,7 +28,14 @@ class php7_1 ($fpm_user = "www-data") {
     require => [ Exec["add ondrej/php ppa"] ]
   }
 
-  package { ["php7.1-cli", "php7.1-sqlite3", "php7.1-curl", "php7.1-fpm"]:
+  package { [
+    "php7.1-cli",
+    "php7.1-sqlite3",
+    "php7.1-curl",
+    "php7.1-fpm",
+    "php7.1-xml",
+    "php7.1-mbstring"
+  ]:
     ensure  => present,
     require => Exec["apt-get update after adding ondrej/php ppa"],
   }
