@@ -54,4 +54,13 @@ class php7_1 ($fpm_user = "www-data") {
     notify  => Service["php7.1-fpm"],
   }
 
+  file { "/etc/php/7.1/fpm/php.ini":
+    owner   => "root",
+    group   => "root",
+    mode    => 0644,
+    content => template("php7_1/etc/php/7.1/php.ini.erb"),
+    require => [ Package["php7.1-fpm"] ],
+    notify  => Service["php7.1-fpm"],
+  }
+
 }
