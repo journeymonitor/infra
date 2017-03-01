@@ -19,7 +19,7 @@ class firefox {
   exec { "extract firefox":
     cwd     => "/opt",
     command => "/bin/rm -rf /opt/firefox && /bin/tar xvfj /var/tmp/firefox-45.7.0esr.tar.bz2",
-    unless  => "/opt/firefox/firefox --version | grep 'Mozilla Firefox 45.7.0' &> /dev/null",
+    unless  => "/bin/grep '45.7.0' /opt/firefox/application.ini",
     require => [ Package["bzip2"] ],
   }
 
