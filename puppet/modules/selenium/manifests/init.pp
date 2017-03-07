@@ -1,10 +1,10 @@
 class selenium {
 
-  include firefox
+  include chromium
 
   package { ["xvfb"]:
     ensure => "installed",
-    require => [ Class["firefox"], Class["jre7"], Exec["apt-get update"] ],
+    require => [ Class["chromium"], Class["jre7"], Exec["apt-get update"] ],
   }
 
   file { "/opt/selenese-runner-java":
