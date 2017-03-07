@@ -17,6 +17,7 @@ services:
       - "8082:8082"
 
   journeymonitor-monitor:
+    privileged: true # Required for chromium-browser to work
     build:
       context: ../../
       dockerfile: infra/docker/Dockerfile-monitor
