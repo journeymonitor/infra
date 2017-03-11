@@ -1,6 +1,6 @@
 class selenium {
 
-  include chromium
+  include firefox
 
   package { ["xvfb"]:
     ensure => "installed",
