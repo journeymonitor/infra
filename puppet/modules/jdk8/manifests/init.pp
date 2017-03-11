@@ -2,7 +2,8 @@ class jdk8 {
 
   exec { "add openjdk-8-jdk ppa for jdk8":
     command => "/usr/bin/add-apt-repository --yes ppa:openjdk-r/ppa",
-    creates => "/etc/apt/sources.list.d/openjdk-r-ppa-trusty.list"
+    creates => "/etc/apt/sources.list.d/openjdk-r-ppa-trusty.list",
+    require => Package["software-properties-common"]
   }
 
   exec { "apt-get update after adding openjdk-8-jdk ppa for jdk8":
