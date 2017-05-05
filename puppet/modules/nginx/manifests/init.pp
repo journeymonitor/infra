@@ -1,5 +1,7 @@
 class nginx ($app_env = "prod", $user = "www-data") {
 
+  include munin
+
   package { ["nginx"]:
     ensure => "installed",
     require => Exec["apt-get update"],

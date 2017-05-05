@@ -17,6 +17,10 @@ server {
 		include fastcgi_params;
 	}
 
+  location /munin {
+    alias /var/cache/munin/www;
+  }
+
 	location / {
 		if (-f $request_filename) {
 			expires max;
