@@ -54,7 +54,7 @@ Thus, the following modularization hierarchy is practiced:
                                        |
                                        |
                         |--------------|--------------|
-                  a System   a System    a System
+                    a System       a System       a System
                         |
                         |
                         | consists of one or more Applications
